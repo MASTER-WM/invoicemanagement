@@ -1,0 +1,71 @@
+{% extends 'partials/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+<style>
+       @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Lalezar&family=Lateef&family=Scheherazade+New:wght@400;700&display=swap');
+
+      font-family: 'Amiri', serif;
+      font-family: 'Lalezar', cursive;
+      font-family: 'Lateef', cursive;
+      font-family: 'Scheherazade New', serif;
+      @media (min-width: 576px)
+      .ms-sm-auto {
+      margin-right: auto!important;
+}
+
+</style>
+
+{% block main %}
+
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">خانه</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-12">
+
+            <div class="card mb-5">
+                <h5 class="card-header">فاکتورها</h5>
+                <div class="card-body">
+                  <h5 class="card-title">مجموع تمامی فاکتورها : {{invoices}}</h5>
+                  <h5 class="card-title">فاکتور های پرداخت شده: {{paidInvoices}}</h5>
+                  <a href="{% url 'invoices' %}" class="btn btn-primary btn-lg">نمایش فاکتور ها</a>
+                </div>
+              </div>
+
+              <div class="card mb-5">
+                  <h5 class="card-header">مشتریان</h5>
+                  <div class="card-body">
+                    <h5 class="card-title">مجموع همه مشتریان: {{clients}}</h5>
+                    <a href="{% url 'clients' %}" class="btn btn-primary btn-lg">نمایش مشتریان</a>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-6">
+        <div class="p-5">
+          <img class=img-fluid  src="{% static 'assets/img/empty.svg' %}" alt="Skolo Online Learning">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}
