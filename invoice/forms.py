@@ -34,8 +34,6 @@ class ClientForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
         required=True, label='نام مشتری')
 
-    clientLogo = forms.ImageField()
-
     addressLine1 = forms.CharField(
     widget = forms.Textarea(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
              required = False, label = 'آدرس')

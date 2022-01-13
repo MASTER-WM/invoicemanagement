@@ -235,7 +235,7 @@ def viewPDFInvoice(request, slug):
     products = Product.objects.filter(invoice=invoice)
 
     #Get Client Settings
-    p_settings = Settings.objects.get(clientName='amir')
+    p_settings = Settings.objects.get(clientName='شرکت هیدرولیک صنعت پاسارگاد')
 
     #Calculate the Invoice Total
     invoiceCurrency = ''
@@ -272,7 +272,7 @@ def viewDocumentInvoice(request, slug):
     products = Product.objects.filter(invoice=invoice)
 
     #Get Client Settings
-    p_settings = Settings.objects.get(clientName='Skolo Online Learning')
+    p_settings = Settings.objects.get(clientName='شرکت هیدرولیک صنعت پاسارگاد')
 
     #Calculate the Invoice Total
     invoiceTotal = 0.0
@@ -342,7 +342,7 @@ def emailDocumentInvoice(request, slug):
     products = Product.objects.filter(invoice=invoice)
 
     #Get Client Settings
-    p_settings = Settings.objects.get(clientName='Skolo Online Learning')
+    p_settings = Settings.objects.get(clientName='شرکت هیدرولیک صنعت پاسارگاد')
 
     #Calculate the Invoice Total
     invoiceTotal = 0.0
@@ -444,7 +444,7 @@ def deleteProduct(request, slug):
 
 
 def companySettings(request):
-    company = Settings.objects.get(clientName='amir')
+    company = Settings.objects.get(clientName='شرکت هیدرولیک صنعت پاسارگاد')
     context = {'company': company}
     return render(request, 'invoice/company-settings.html', context)
 

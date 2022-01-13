@@ -16,6 +16,12 @@ path('invoices/create-build/<slug:slug>',views.createBuildInvoice, name='create-
 #Delete an invoice
 path('invoices/delete/<slug:slug>',views.deleteInvoice, name='delete-invoice'),
 
+#Delete an Client
+path('clients/delete/<slug:slug>',views.deleteClient, name='delete-client'),
+
+#Delete a Product
+path('products/delete/<slug:slug>',views.deleteProduct, name='delete-product'),
+
 #PDF and EMAIL Paths
 path('invoices/view-pdf/<slug:slug>',views.viewPDFInvoice, name='view-pdf-invoice'),
 path('invoices/view-document/<slug:slug>',views.viewDocumentInvoice, name='view-document-invoice'),
