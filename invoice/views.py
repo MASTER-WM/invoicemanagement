@@ -222,8 +222,6 @@ def createBuildInvoice(request, slug):
     return render(request, 'invoice/create-invoice.html', context)
 
 
-
-
 def viewPDFInvoice(request, slug):
     #fetch that invoice
     try:
@@ -237,7 +235,7 @@ def viewPDFInvoice(request, slug):
     products = Product.objects.filter(invoice=invoice)
 
     #Get Client Settings
-    p_settings = Settings.objects.get(clientName='Skolo Online Learning')
+    p_settings = Settings.objects.get(clientName='amir')
 
     #Calculate the Invoice Total
     invoiceCurrency = ''
@@ -446,7 +444,7 @@ def deleteProduct(request, slug):
 
 
 def companySettings(request):
-    company = Settings.objects.get(clientName='Skolo Online Learning')
+    company = Settings.objects.get(clientName='amir')
     context = {'company': company}
     return render(request, 'invoice/company-settings.html', context)
 
