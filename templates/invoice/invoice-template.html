@@ -48,20 +48,20 @@
                                                 <div class="pull-left text-right">
                                                     <address>
                                                         <p class="addr-font-h3 font-bold">ارسال به :</p>
-                                                        <p class="font-bold addr-font-h4">{{p_settings.clientName}}</p>
+                                                        <p class="font-bold addr-font-h4">{{invoice.client.clientName}}</p>
                                                         <p class="text-muted m-l-30">
-                                                            شمال غربی ایران.,
-                                                            <br> اداره مالیات بر درآمد نزدیک,
-                                                            <br> جاده اشهرام,
-                                                            <br> شرق - 380057
+                                                            {{invoice.client.addressLine1}},
+                                                            <br> {{invoice.client.province}}, {{invoice.client.postalCode}}
+                                                            <br> {{invoice.client.emailAddress}}
+                                                            <br> {{invoice.client.phoneNumber}}
                                                         </p>
                                                         <p class="m-t-30">
                                                             <b>تاریخ صورتحساب:</b>
-                                                            <i class="fa fa-calendar"></i> 14 جولای 2017
+                                                            <i class="fa fa-calendar"></i> {{invoice.date_created|date}}
                                                         </p>
                                                         <p>
-                                                            <b>وضعیت :</b>
-                                                            <span class="label label-success">موفق</span>
+                                                            <b>تاریخ سررسید :</b>
+                                                            <span class="label label-success">{{invoice.dueDate}}</span>
                                                         </p>
                                                     </address>
                                                 </div>
@@ -72,60 +72,49 @@
                                                         <thead>
                                                             <tr>
                                                                 <th class="text-center">#</th>
-                                                                <th class="text-center">عکس</th>
+                                                                <th class="text-center">عنوان</th>
                                                                 <th class="text-center">توضیحات</th>
                                                                 <th class="text-center">تعداد</th>
                                                                 <th class="text-center">بهای واحد</th>
-                                                                <th class="text-right">  {{invoiceCurrency}} {{invoiceTotal}} :مجموع</th>
+                                                                <th class="text-right"> مجموع</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        {% for product in products %}
                                                             <tr>
                                                                 <td class="text-center">1</td>
                                                                 <td class="table-img text-center">
-                                                                    <img src="../../assets/images/products/p-13.jpg"
-                                                                        alt="">
+                                                                    {{product.title}}
                                                                 </td>
-                                                                <td class="text-center">لورم ایپسوم متن ساختگی با تولید سادگی</td>
-                                                                <td class="text-center">1</td>
-                                                                <td class="text-center">100 تومان</td>
-                                                                <td class="text-right">100 تومان</td>
+                                                                <td class="text-center"></td>
+                                                                <td class="text-center">{{product.quantity}}</td>
+                                                                <td class="text-center">{{product.currency}} {{product.price}}</td>
+                                                                <td class="text-right">{{product.currency}} {{product.price}} %}</td>
                                                             </tr>
+                                                        {% endfor %}
                                                             <tr>
-                                                                <td class="text-center">2</td>
-                                                                <td class="table-img text-center">
-                                                                    <img src="../../assets/images/products/p-14.jpg"
-                                                                        alt="">
-                                                                </td>
-                                                                <td class="text-center">لورم ایپسوم متن ساختگی با تولید سادگی</td>
-                                                                <td class="text-center">3</td>
-                                                                <td class="text-center">50 تومان</td>
-                                                                <td class="text-right">100 تومان</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-center">3</td>
-                                                                <td class="table-img text-center">
-                                                                    <img src="../../assets/images/products/p-15.jpg"
-                                                                        alt="">
-                                                                </td>
-                                                                <td class="text-center">لورم ایپسوم متن ساختگی با تولید سادگی </td>
-                                                                <td class="text-center">2</td>
-                                                                <td class="text-center">100 تومان</td>
-                                                                <td class="text-right">50 تومان</td>
-                                                            </tr>
-                                                        </tbody>
+                                                               </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="pull-right m-t-30 text-right">
-                                                    <p>مقدار کل: 300 تومان</p>
+                                                    <p>مقدار کل:{{invoiceCurrency}} {{invoiceTotal}}</p>
                                                     <p>تخفیف : 10تومان </p>
                                                     <p>مالیات (10٪) : 14تومان </p>
                                                     <hr>
                                                     <h3>
-                                                        <b>مجموع :</b> 304تومان</h3>
+                                                        <b>مجموع :</b> {{invoiceCurrency}} {{invoiceTotal}}</h3>
                                                 </div>
+                                                <div class="pull-left">
+                                                <tr>
+                                                <td>
+                                                    <p>
+                                                        {{invoice.notes}}
+                                                    </p>
+                                                 </td>
+                                                 </tr>
+                                                    </div>
                                                 <div class="clearfix"></div>
                                                 <hr>
                                                 <div class="text-right">
