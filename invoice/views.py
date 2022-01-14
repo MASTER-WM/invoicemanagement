@@ -397,7 +397,7 @@ def emailDocumentInvoice(request, slug):
     from_client = p_settings.clientName
     emailInvoiceClient(to_email, from_client, pdf_save_path)
 
-    invoice.status = 'EMAIL_SENT'
+    invoice.status = 'ایمیل ارسال شد'
     invoice.save()
 
     #Email was send, redirect back to view - invoice

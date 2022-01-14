@@ -66,6 +66,11 @@ class ClientForm(forms.ModelForm):
 
 class ProductForm(forms.ModelForm):
 
+    CURRENCY = [
+        ('ریال', 'ریال'),
+        ('تومان', 'تومان'),
+    ]
+
     title = forms.CharField(
         widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
         required=True, label='نام محصول')
@@ -82,9 +87,11 @@ class ProductForm(forms.ModelForm):
         widget=forms.NumberInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
         required=True, label='قیمت')
 
-    # currency = forms.CharField(
-    #     widget=forms.Select(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
-    #     required=False, label='واحد ارزی')
+    currency = forms.ChoiceField(
+        choices=CURRENCY,
+        required=True,
+        label='دوره پرداخت',
+        widget=forms.Select(attrs={'class': 'form-control mb-3'}), )
 
 
     class Meta:
@@ -93,31 +100,19 @@ class ProductForm(forms.ModelForm):
 
 
 class InvoiceForm(forms.ModelForm):
-    THE_OPTIONS = [
-    ('14 days', '۱۴ روز'),
-    ('30 days', '۳۰ روز'),
-    ('60 days', '۶۰ روز'),
-    ]
-    STATUS_OPTIONS = [
-    ('CURRENT', 'جاری'),
-    ('OVERDUE', 'عقب افتاده'),
-    ('PAID', 'پرداخت شده'),
-    ]
 
     title = forms.CharField(
                     required = True,
                     label='عنوان فاکتور',
                     widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'عنوان فاکتور'}),)
-    paymentTerms = forms.ChoiceField(
-                    choices = THE_OPTIONS,
-                    required = True,
+    paymentTerms = forms.CharField(
+                    required = False,
                     label='دوره پرداخت',
-                    widget=forms.Select(attrs={'class': 'form-control mb-3'}),)
-    status = forms.ChoiceField(
-                    choices = STATUS_OPTIONS,
-                    required = True,
+                    widget=forms.TextInput(attrs={'class': 'form-control mb-3'}),)
+    status = forms.CharField(
+                    required = False,
                     label='وضعیت فاکتور',
-                    widget=forms.Select(attrs={'class': 'form-control mb-3'}),)
+                    widget=forms.TextInput(attrs={'class': 'form-control mb-3'}),)
     notes = forms.CharField(
                     required = True,
                     label='توضیحات لازم برای مشتری',

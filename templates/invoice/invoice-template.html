@@ -28,7 +28,7 @@
                                     <div class="white-box">
                                         <h3>
                                             <b>صورتحساب</b>
-                                            <span class="pull-left">#345766</span>
+                                            <span class="pull-left">{{invoice.number}}</span>
                                         </h3>
                                         <hr>
                                         <div class="row">
@@ -88,8 +88,8 @@
                                                                 </td>
                                                                 <td class="text-center"></td>
                                                                 <td class="text-center">{{product.quantity}}</td>
-                                                                <td class="text-center">{{product.currency}} {{product.price}}</td>
-                                                                <td class="text-right">{{product.currency}} {{product.price}} %}</td>
+                                                                <td class="text-center"> {{product.price}} {{product.currency}} </td>
+                                                                <td class="text-right">{{product.price}} {{product.currency}} </td>
                                                             </tr>
                                                         {% endfor %}
                                                             <tr>
@@ -99,12 +99,12 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="pull-right m-t-30 text-right">
-                                                    <p>مقدار کل:{{invoiceCurrency}} {{invoiceTotal}}</p>
-                                                    <p>تخفیف : 10تومان </p>
-                                                    <p>مالیات (10٪) : 14تومان </p>
+                                                    <p>مبلغ کل بدون احتساب مالیات: {{invoiceTotal}}  {{invoiceCurrency}}</p>
+                                                    <p>تخفیف :  </p>
+                                                    <p>مالیات (۹٪) :  </p>
                                                     <hr>
                                                     <h3>
-                                                        <b>مجموع :</b> {{invoiceCurrency}} {{invoiceTotal}}</h3>
+                                                        <b>مجموع :</b>  {{invoiceTotal}} {{invoiceCurrency}}</h3>
                                                 </div>
                                                 <div class="pull-left">
                                                 <tr>

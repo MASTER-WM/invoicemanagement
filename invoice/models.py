@@ -8,17 +8,12 @@ from django.contrib.auth.models import User
 
 class Client(models.Model):
 
-    PROVINCES = [
-    ('Gauteng', 'Gauteng'),
-    ('Free State', 'Free State'),
-    ('Limpopo', 'Limpopo'),
-    ]
 
     #Basic Fields.
     clientName = models.CharField(null=True, blank=True, max_length=200)
     addressLine1 = models.CharField(null=True, blank=True, max_length=200)
     clientLogo  = models.ImageField(default='default_logo.jpg', upload_to='company_logos')
-    province = models.CharField(choices=PROVINCES, blank=True, max_length=100)
+    province = models.CharField(null=True, blank=True, max_length=100)
     postalCode = models.CharField(null=True, blank=True, max_length=10)
     phoneNumber = models.CharField(null=True, blank=True, max_length=100)
     emailAddress = models.CharField(null=True, blank=True, max_length=100)
@@ -55,24 +50,13 @@ class Client(models.Model):
 
 
 class Invoice(models.Model):
-    TERMS = [
-    ('14 days', '14 days'),
-    ('30 days', '30 days'),
-    ('60 days', '60 days'),
-    ]
 
-    STATUS = [
-    ('CURRENT', 'CURRENT'),
-    ('EMAIL_SENT', 'EMAIL_SENT'),
-    ('OVERDUE', 'OVERDUE'),
-    ('PAID', 'PAID'),
-    ]
 
     title = models.CharField(null=True, blank=True, max_length=100)
     number = models.CharField(null=True, blank=True, max_length=100)
     dueDate = models.DateField(null=True, blank=True)
-    paymentTerms = models.CharField(choices=TERMS, default='14 days', max_length=100)
-    status = models.CharField(choices=STATUS, default='CURRENT', max_length=100)
+    paymentTerms = models.CharField(null=True, blank=True, max_length=100)
+    status = models.CharField(null=True, blank=True,  max_length=100)
     notes = models.TextField(null=True, blank=True)
 
     #RELATED fields
@@ -109,15 +93,15 @@ class Invoice(models.Model):
 
 class Product(models.Model):
     CURRENCY = [
-    ('R', 'ZAR'),
-    ('$', 'USD'),
+    ('ریال', 'ریال'),
+    ('تومان', 'تومان'),
     ]
 
     title = models.CharField(null=True, blank=True, max_length=100)
     description = models.TextField(null=True, blank=True)
     quantity = models.FloatField(null=True, blank=True)
     price = models.FloatField(null=True, blank=True)
-    currency = models.CharField(choices=CURRENCY, default='R', max_length=100)
+    currency = models.CharField(choices=CURRENCY, default='ریال', max_length=100)
 
     #Related Fields
     invoice = models.ForeignKey(Invoice, blank=True, null=True, on_delete=models.CASCADE)
@@ -153,17 +137,13 @@ class Product(models.Model):
 
 class Settings(models.Model):
 
-    PROVINCES = [
-    ('Gauteng', 'Gauteng'),
-    ('Free State', 'Free State'),
-    ('Limpopo', 'Limpopo'),
-    ]
+
 
     #Basic Fields
     clientName = models.CharField(null=True, blank=True, max_length=200)
     clientLogo = models.ImageField(default='default_logo.jpg', upload_to='company_logos')
     addressLine1 = models.CharField(null=True, blank=True, max_length=200)
-    province = models.CharField(choices=PROVINCES, blank=True, max_length=100)
+    province = models.CharField(blank=True, max_length=100)
     postalCode = models.CharField(null=True, blank=True, max_length=10)
     phoneNumber = models.CharField(null=True, blank=True, max_length=100)
     emailAddress = models.CharField(null=True, blank=True, max_length=100)
