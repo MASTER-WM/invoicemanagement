@@ -38,7 +38,7 @@ def anonymous_required(function=None, redirect_url=None):
 
 def index(request):
     context = {}
-    return render(request, 'invoice/index.html', context)
+    return render(request, 'invoice/login.html', context)
 
 
 @anonymous_required
@@ -71,16 +71,16 @@ def login(request):
 
 @login_required
 def dashboard(request):
-    clients = Client.objects.all().count()
-    invoices = Invoice.objects.all().count()
-    paidInvoices = Invoice.objects.filter(status='PAID').count()
-
-
-    context = {}
-    context['clients'] = clients
-    context['invoices'] = invoices
-    context['paidInvoices'] = paidInvoices
-    return render(request, 'invoice/dashboard.html', context)
+    # clients = Client.objects.all().count()
+    # invoices = Invoice.objects.all().count()
+    # # paidInvoices = Invoice.objects.filter(status='PAID').count()
+    #
+    #
+    # context = {}
+    # context['clients'] = clients
+    # context['invoices'] = invoices
+    # context['paidInvoices'] = paidInvoices
+    return render(request, 'invoice/dashboard.html')
 
 
 
@@ -153,12 +153,12 @@ def logout(request):
 @login_required
 def createInvoice(request):
     #create a blank invoice ....
-    number = 'INV-'+str(uuid4()).split('-')[1]
+    # number = 'INV-'+str(uuid4()).split('-')[1]
     newInvoice = Invoice.objects.create(number=number)
     newInvoice.save()
 
-    inv = Invoice.objects.get(number=number)
-    return redirect('create-build-invoice', slug=inv.slug)
+    # inv = Invoice.objects.get(number=number)
+    return redirect('create-build-invoice')
 
 
 
@@ -204,7 +204,7 @@ def createBuildInvoice(request, slug):
         elif inv_form.is_valid and 'paymentTerms' in request.POST:
             inv_form.save()
 
-            messages.success(request, "فاکتور با موفقیت آپدیت شد")
+            messages.success(request, "سفارش با موفقیت آپدیت شد")
             return redirect('create-build-invoice', slug=slug)
         elif client_form.is_valid() and 'client' in request.POST:
 
@@ -235,7 +235,7 @@ def viewPDFInvoice(request, slug):
     products = Product.objects.filter(invoice=invoice)
 
     #Get Client Settings
-    p_settings = Settings.objects.get(clientName='شرکت هیدرولیک صنعت پاسارگاد')
+    p_settings = Settings.objects.get(clientName='شرکت هیدرو صنعت پاسارگاد')
 
     #Calculate the Invoice Total
     invoiceCurrency = ''
@@ -272,7 +272,7 @@ def viewDocumentInvoice(request, slug):
     products = Product.objects.filter(invoice=invoice)
 
     #Get Client Settings
-    p_settings = Settings.objects.get(clientName='شرکت هیدرولیک صنعت پاسارگاد')
+    p_settings = Settings.objects.get(clientName='شرکت هیدرو صنعت پاسارگاد')
 
     #Calculate the Invoice Total
     invoiceTotal = 0.0
@@ -342,7 +342,7 @@ def emailDocumentInvoice(request, slug):
     products = Product.objects.filter(invoice=invoice)
 
     #Get Client Settings
-    p_settings = Settings.objects.get(clientName='شرکت هیدرولیک صنعت پاسارگاد')
+    p_settings = Settings.objects.get(clientName='شرکت هیدرو صنعت پاسارگاد')
 
     #Calculate the Invoice Total
     invoiceTotal = 0.0
@@ -444,7 +444,7 @@ def deleteProduct(request, slug):
 
 
 def companySettings(request):
-    company = Settings.objects.get(clientName='شرکت هیدرولیک صنعت پاسارگاد')
+    company = Settings.objects.get(clientName='شرکت هیدرو صنعت پاسارگاد')
     context = {'company': company}
     return render(request, 'invoice/company-settings.html', context)
 

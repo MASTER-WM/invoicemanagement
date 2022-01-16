@@ -66,37 +66,26 @@ class ClientForm(forms.ModelForm):
 
 class ProductForm(forms.ModelForm):
 
-    CURRENCY = [
-        ('ریال', 'ریال'),
-        ('تومان', 'تومان'),
-    ]
 
     title = forms.CharField(
         widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
         required=True, label='نام محصول')
 
-    description = forms.CharField(
-        widget=forms.Textarea(attrs={'row':2, 'id': 'floatingInput', 'class': 'form-control mb-3'}),
-        required=False, label='توضیحات محصول')
-
     quantity = forms.CharField(
         widget=forms.NumberInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
         required=True, label='تعداد')
 
-    price = forms.CharField(
-        widget=forms.NumberInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
-        required=True, label='قیمت')
+    description = forms.CharField(
+        widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
+        required=False, label='توضیحات محصول')
 
-    currency = forms.ChoiceField(
-        choices=CURRENCY,
-        required=True,
-        label='دوره پرداخت',
-        widget=forms.Select(attrs={'class': 'form-control mb-3'}), )
-
+    unit = forms.CharField(
+        widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
+        required=True, label='واحد')
 
     class Meta:
         model = Product
-        fields = ['title', 'description', 'quantity', 'price']
+        fields = ['title', 'quantity', 'description','unit']
 
 
 class InvoiceForm(forms.ModelForm):
@@ -105,14 +94,12 @@ class InvoiceForm(forms.ModelForm):
                     required = True,
                     label='شماره سفارش',
                     widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'شماره سفارش'}),)
-    paymentTerms = forms.CharField(
-                    required = False,
-                    label='دوره پرداخت',
-                    widget=forms.TextInput(attrs={'class': 'form-control mb-3'}),)
+
     create_Date = forms.DateField(
         required=True,
         label='تاریخ ثبت سفارش ',
         widget=DateInput(attrs={'class': 'form-control mb-3'}), )
+
     request_code = forms.CharField(
                     required = True,
                     label='شماره / کد درخواست کالا',
@@ -136,9 +123,9 @@ class InvoiceForm(forms.ModelForm):
                 Column('dueDate', css_class='form-group col-md-6'),
                 Column('request_code', css_class='form-group col-md-6'),
                 css_class='form-row'),
-            'notes',
 
-            Submit('submit', ' ویرایش '))
+
+            Submit('submit', 'ثبت یا ویرایش '))
 
     class Meta:
         model = Invoice

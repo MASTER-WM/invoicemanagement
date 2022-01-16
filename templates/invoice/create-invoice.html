@@ -15,7 +15,7 @@
 
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">افزودن فاکتور جدید</h1>
+    <h1 class="h2">افزودن سفارش جدید</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
         <a href="{% url 'invoices' %}"><button type="button" class="btn btn-primary">برگشت</button></a>
@@ -46,11 +46,9 @@
                   <tr>
 
                     <th>عنوان</th>
+                    <th>تغداد</th>
+                    <th>واحد</th>
                     <th>توضیحات</th>
-                    <th>تعداد</th>
-                    <th>قیمت</th>
-                    <th>دیگر فاکتور های مرتبط با این فاکتور</th>
-
                   </tr>
                 </thead>
                 <tbody>
@@ -58,10 +56,9 @@
                   {% for product in products %}
                 <tr>
                   <td>{{product.title}}</td>
-                  <td>{{product.description}}</td>
                   <td>{{product.quantity}}</td>
-                  <td>{{product.currency}} {{product.price}}</td>
-                  <td>{{product.invoice.number}}</td>
+                  <td>{{product.unit}}</td>
+                  <td>{{product.description}}</td>
                 </tr>
                   {% endfor %}
 
@@ -104,7 +101,7 @@
 
             <div class="row">
               <div class="col-lg-4">
-                <a href="{% url 'view-pdf-invoice' invoice.slug %}"><button class="btn btn-info text-white"> نمایش فاکتور </button></a>
+                <a href="{% url 'view-pdf-invoice' invoice.slug %}"><button class="btn btn-info text-white"> نمایش سفارش </button></a>
               </div>
               <div class="col-lg-4">
                 <a href="{% url 'view-document-invoice' invoice.slug %}"><button class="btn btn-success text-white"> نمایش نسخه PDF </button></a>
@@ -140,7 +137,7 @@
 
 
         <div class="modal-header border-bottom-0">
-          <h5 class="modal-title">افزودن فاکتور محصول</h5>
+          <h5 class="modal-title">افزودن سفارش محصول</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 

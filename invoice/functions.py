@@ -11,7 +11,7 @@ def emailInvoiceClient(to_email, from_client, filepath):
     لطفا فایل صورتحساب خود را که در این ایمیل بارگزاری شده است چک کنین
 
     با احترام
-    شرکت هیدرولیک صنعت پارسیان
+    شرکت هیدرو صنعت پارسیان
     """.format(from_client)
 
     message = EmailMessage(subject, body, from_email, [to_email])
