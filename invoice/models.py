@@ -51,13 +51,12 @@ class Client(models.Model):
 
 class Invoice(models.Model):
 
-
-    title = models.CharField(null=True, blank=True, max_length=100)
+    request_code = models.CharField(null=True, blank=True, max_length=50)
+    titile = models.CharField(null=True, blank=True, max_length=100)
     number = models.CharField(null=True, blank=True, max_length=100)
+    form_Number = models.CharField(null=True, blank=True, default='AF-07-03', max_length=100)
     dueDate = models.DateField(null=True, blank=True)
-    paymentTerms = models.CharField(null=True, blank=True, max_length=100)
-    status = models.CharField(null=True, blank=True,  max_length=100)
-    notes = models.TextField(null=True, blank=True)
+    create_Date = models.DateField(null=True, blank=True)
 
     #RELATED fields
     client = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL)
@@ -92,16 +91,11 @@ class Invoice(models.Model):
 
 
 class Product(models.Model):
-    CURRENCY = [
-    ('ریال', 'ریال'),
-    ('تومان', 'تومان'),
-    ]
 
     title = models.CharField(null=True, blank=True, max_length=100)
     description = models.TextField(null=True, blank=True)
     quantity = models.FloatField(null=True, blank=True)
-    price = models.FloatField(null=True, blank=True)
-    currency = models.CharField(choices=CURRENCY, default='ریال', max_length=100)
+    unit = models.CharField(null=True, blank=True, max_length=20)
 
     #Related Fields
     invoice = models.ForeignKey(Invoice, blank=True, null=True, on_delete=models.CASCADE)

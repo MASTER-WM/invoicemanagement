@@ -103,24 +103,24 @@ class InvoiceForm(forms.ModelForm):
 
     title = forms.CharField(
                     required = True,
-                    label='عنوان فاکتور',
-                    widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'عنوان فاکتور'}),)
+                    label='شماره سفارش',
+                    widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'شماره سفارش'}),)
     paymentTerms = forms.CharField(
                     required = False,
                     label='دوره پرداخت',
                     widget=forms.TextInput(attrs={'class': 'form-control mb-3'}),)
-    status = forms.CharField(
-                    required = False,
-                    label='وضعیت فاکتور',
-                    widget=forms.TextInput(attrs={'class': 'form-control mb-3'}),)
-    notes = forms.CharField(
+    create_Date = forms.DateField(
+        required=True,
+        label='تاریخ ثبت سفارش ',
+        widget=DateInput(attrs={'class': 'form-control mb-3'}), )
+    request_code = forms.CharField(
                     required = True,
-                    label='توضیحات لازم برای مشتری',
-                    widget=forms.Textarea(attrs={'class': 'form-control mb-3'}))
+                    label='شماره / کد درخواست کالا',
+                    widget=forms.TextInput(attrs={'class': 'form-control mb-3'}))
 
     dueDate = forms.DateField(
                         required = True,
-                        label='تاریخ ثبت فاکتور',
+                        label='تاریخ تحویل سفارش ',
                         widget=DateInput(attrs={'class': 'form-control mb-3'}),)
 
 
@@ -130,11 +130,11 @@ class InvoiceForm(forms.ModelForm):
         self.helper.layout = Layout(
             Row(
                 Column('title', css_class='form-group col-md-6'),
-                Column('dueDate', css_class='form-group col-md-6'),
+                Column('create_Date', css_class='form-group col-md-6'),
                 css_class='form-row'),
             Row(
-                Column('paymentTerms', css_class='form-group col-md-6'),
-                Column('status', css_class='form-group col-md-6'),
+                Column('dueDate', css_class='form-group col-md-6'),
+                Column('request_code', css_class='form-group col-md-6'),
                 css_class='form-row'),
             'notes',
 
@@ -142,7 +142,7 @@ class InvoiceForm(forms.ModelForm):
 
     class Meta:
         model = Invoice
-        fields = ['title', 'dueDate', 'paymentTerms', 'status', 'notes']
+        fields = ['title', 'dueDate', 'create_Date', 'form_Number', 'request_code']
 
 
 class SettingsForm(forms.ModelForm):
