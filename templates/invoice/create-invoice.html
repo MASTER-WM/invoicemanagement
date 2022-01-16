@@ -49,6 +49,7 @@
                     <th>تغداد</th>
                     <th>واحد</th>
                     <th>توضیحات</th>
+                    <th scope="col">حذف</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -59,6 +60,9 @@
                   <td>{{product.quantity}}</td>
                   <td>{{product.unit}}</td>
                   <td>{{product.description}}</td>
+                  <td>
+          <a href="{% url 'delete-product' product.slug %}"><button class="btn btn-danger"> حذف </button></a>
+        </td>
                 </tr>
                   {% endfor %}
 

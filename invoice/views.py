@@ -152,13 +152,13 @@ def logout(request):
 
 @login_required
 def createInvoice(request):
-    #create a blank invoice ....
-    # number = 'INV-'+str(uuid4()).split('-')[1]
+    # create a blank invoice ....
+    number = 'ORD-' + str(uuid4()).split('-')[1]
     newInvoice = Invoice.objects.create(number=number)
     newInvoice.save()
 
-    # inv = Invoice.objects.get(number=number)
-    return redirect('create-build-invoice')
+    inv = Invoice.objects.get(number=number)
+    return redirect('create-build-invoice', slug=inv.slug)
 
 
 
@@ -201,7 +201,7 @@ def createBuildInvoice(request, slug):
 
             messages.success(request, "محصول با موفقیت اضافه شد")
             return redirect('create-build-invoice', slug=slug)
-        elif inv_form.is_valid and 'paymentTerms' in request.POST:
+        elif inv_form.is_valid and  request.POST:
             inv_form.save()
 
             messages.success(request, "سفارش با موفقیت آپدیت شد")
@@ -436,9 +436,9 @@ def deleteProduct(request, slug):
         Product.objects.get(slug=slug).delete()
     except:
         messages.error(request, 'مشکلی پیش آمده است')
-        return redirect('products')
+        return redirect('create-build-invoice')
 
-    return redirect('products')
+    return redirect('create-build-invoice')
 
 
 

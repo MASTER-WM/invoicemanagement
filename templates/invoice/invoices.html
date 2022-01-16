@@ -51,7 +51,7 @@
           <th>نام مشتری</th>
           <th>شماره تماس</th>
           <th>تاریخ سررسید</th>
-          <th>وضعیت پرداخت</th>
+          <th>شماره درخواست</th>
           <th>حذف</th>
           <th>نمایش</th>
         </tr>
@@ -65,7 +65,7 @@
         <td>{{invoice.client.clientName}}</td>
         <td>{{invoice.client.phoneNumber}}</td>
         <td>{{invoice.dueDate}}</td>
-        <td>{{invoice.status}}</td>
+        <td>{{invoice.request_code}}</td>
         <td>
           <a href="{% url 'delete-invoice' invoice.slug %}"><button class="btn btn-danger"> حذف </button></a>
         </td>

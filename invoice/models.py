@@ -52,7 +52,7 @@ class Client(models.Model):
 class Invoice(models.Model):
 
     request_code = models.CharField(null=True, blank=True, max_length=50)
-    titile = models.CharField(null=True, blank=True, max_length=100)
+    title = models.CharField(null=True, blank=True, max_length=100)
     number = models.CharField(null=True, blank=True, max_length=100)
     form_Number = models.CharField(null=True, blank=True, default='AF-07-03', max_length=100)
     dueDate = models.DateField(null=True, blank=True)
