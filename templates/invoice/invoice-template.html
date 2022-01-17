@@ -5,137 +5,200 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>سیستم اعلام سفارش</title>
-            <link rel="icon" href="{% static 'assets/pdf/assets/images/favicon.ico' %}" type="image/x-icon">
-    <!-- Plugins Core Css -->
-    <link href="{% static 'assets/pdf/assets/css/app.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/pdf/assets/js/bundles/materialize-rtl/materialize-rtl.min.css' %}" rel="stylesheet">
-    <!-- Custom Css -->
-    <link href="{% static 'assets/pdf/assets/css/style.css' %}" rel="stylesheet" />
-    <!-- You can choose a theme from css/styles instead of get all themes -->
-    <link href="{% static 'assets/pdf/assets/css/styles/all-themes.css' %}" rel="stylesheet" />
+		<title>سفارش</title>
+    <link href="{% static 'assets/css/fonts.css' %}" rel="stylesheet">
 
+		<style>
+			.invoice-box {
+				direction: rtl;
+				max-width: 800px;
+				margin: auto;
+				padding: 30px;
+				border: 1px solid #eee;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+				font-size: 16px;
+				line-height: 24px;
+				font-family: IRANSans !important;
+				color: #555;
+			}
+
+			.invoice-box table {
+				text-align:right;
+				width: 100%;
+				line-height: inherit;
+
+			}
+
+			.invoice-box table td {
+				padding: 5px;
+				vertical-align: top;
+			}
+
+			.invoice-box table tr td:nth-child(2) {
+				text-align: left;
+			}
+
+			.invoice-box table tr.top table td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.top table td.title {
+				font-size: 45px;
+				line-height: 45px;
+				color: #333;
+			}
+
+			.invoice-box table tr.information table td {
+				padding-bottom: 40px;
+			}
+
+			.invoice-box table tr.heading td {
+				background: #eee;
+				border-bottom: 1px solid #ddd;
+				font-weight: bold;
+			}
+
+			.invoice-box table tr.details td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.item td {
+				border-bottom: 1px solid #eee;
+			}
+
+			.invoice-box table tr.item.last td {
+				border-bottom: none;
+			}
+
+			.invoice-box table tr.total td:nth-child(2) {
+				border-top: 2px solid #eee;
+				font-weight: bold;
+			}
+
+			@media only screen and (max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+
+				.invoice-box table tr.information table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+			}
+
+			/** RTL **/
+			.invoice-box.rtl {
+				direction: rtl;
+				font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			}
+
+			.invoice-box.rtl table {
+				text-align: right;
+			}
+
+			.invoice-box.rtl table tr td:nth-child(2) {
+				text-align: left;
+			}
+		</style>
 	</head>
 
-    <body>
-
-            <div class="row clearfix">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="card">
-                        <div class="body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="white-box">
-                                        <h3>
-                                            <b>صورتحساب</b>
-                                            <span class="pull-left">{{invoice.number}}</span>
-                                        </h3>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="pull-right">
-                                                    <address>
-                                                        <p class="font-bold"> صادر شده از : {{p_settings.clientName}}</p>
-                                                        <p class="text-muted">
-                                                            {{p_settings.addressLine1}}
-                                                            {{p_settings.province}}, {{p_settings.postalCode}}
-                                                            <br>{{p_settings.emailAddress}}
-                                                            <br>{{p_settings.phoneNumber}}
-                                                            <br>
-                                                        </p>
-                                                    </address>
-                                                </div>
-                                                <div class="pull-left text-right">
-                                                    <address>
-                                                        <p class="addr-font-h3 font-bold">ارسال به :</p>
-                                                        <p class="font-bold addr-font-h4">{{invoice.client.clientName}}</p>
-                                                        <p class="text-muted m-l-30">
-                                                            {{invoice.client.addressLine1}},
-                                                            <br> {{invoice.client.province}}, {{invoice.client.postalCode}}
-                                                            <br> {{invoice.client.emailAddress}}
-                                                            <br> {{invoice.client.phoneNumber}}
-                                                        </p>
-                                                        <p class="m-t-30">
-                                                            <b>تاریخ صورتحساب:</b>
-                                                            <i class="fa fa-calendar"></i> {{invoice.date_created|date}}
-                                                        </p>
-                                                        <p>
-                                                            <b>تاریخ سررسید :</b>
-                                                            <span class="label label-success">{{invoice.dueDate}}</span>
-                                                        </p>
-                                                    </address>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="table-responsive m-t-40">
-                                                    <table class="table table-hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="text-center">#</th>
-                                                                <th class="text-center">عنوان</th>
-                                                                <th class="text-center">توضیحات</th>
-                                                                <th class="text-center">تعداد</th>
-                                                                <th class="text-center">بهای واحد</th>
-                                                                <th class="text-right"> مجموع</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        {% for product in products %}
-                                                            <tr>
-                                                                <td class="text-center">1</td>
-                                                                <td class="table-img text-center">
-                                                                    {{product.title}}
-                                                                </td>
-                                                                <td class="text-center"></td>
-                                                                <td class="text-center">{{product.quantity}}</td>
-                                                                <td class="text-center"> {{product.price}} {{product.currency}} </td>
-                                                                <td class="text-right">{{product.price}} {{product.currency}} </td>
-                                                            </tr>
-                                                        {% endfor %}
-                                                            <tr>
-                                                               </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="pull-right m-t-30 text-right">
-                                                    <p>مبلغ کل بدون احتساب مالیات: {{invoiceTotal}}  {{invoiceCurrency}}</p>
-                                                    <p>تخفیف :  </p>
-                                                    <p>مالیات (۹٪) :  </p>
-                                                    <hr>
-                                                    <h3>
-                                                        <b>مجموع :</b>  {{invoiceTotal}} {{invoiceCurrency}}</h3>
-                                                </div>
-                                                <div class="pull-left">
-                                                <tr>
-                                                <td>
-                                                    <p>
-                                                        {{invoice.notes}}
-                                                    </p>
-                                                 </td>
-                                                 </tr>
-                                                    </div>
-                                                <div class="clearfix"></div>
-                                                <hr>
-                                                <div class="text-right">
-                                                    <button class="btn-hover btn-border-radius color-1"><i class="fas fa-print"></i>
-                                                        چاپ</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script src="../../assets/js/app.min.js"></script>
-    <!-- Custom Js -->
-    <script src="../../assets/js/admin.js"></script>
-</body>
 
 
+
+	<body>
+		<div class="invoice-box">
+
+
+
+			<table cellpadding="0" cellspacing="0">
+				<tr class="top">
+					<td colspan="2">
+						<table>
+
+              <tr >
+      					<td><h1>Invoice: {{p_settings.clientName}}</h1></td>
+      				</tr>
+
+							<tr>
+								<td class="title">
+									<img src="https://host.tatiblockchain.co.za/img/skolo_logo.png" style="width: 100%; max-width: 100px" />
+								</td>
+
+								<td>
+									Invoice #: {{invoice.number}}<br />
+									Created: {{invoice.date_created|date}}<br />
+									Due: {{invoice.dueDate}}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td>
+									{{p_settings.clientName}}<br />
+									{{p_settings.addressLine1}}<br />
+									{{p_settings.province}}, {{p_settings.postalCode}} <br/ >
+                  {{p_settings.emailAddress}} <br/ >
+                  {{p_settings.phoneNumber}}
+								</td>
+
+								<td>
+                  {{invoice.client.clientName}}<br />
+									{{invoice.client.addressLine1}}<br />
+									{{invoice.client.province}}, {{invoice.client.postalCode}}<br />
+									{{invoice.client.emailAddress}} <br/ >
+                  {{invoice.client.phoneNumber}}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+
+				<tr class="heading">
+					<td>Item</td>
+          <td>Quantity</td>
+					<td>Price</td>
+				</tr>
+
+        {% for product in products %}
+				<tr class="item">
+					<td>{{product.title}}</td>
+          <td>{{product.quantity}}</td>
+					<td>{{product.currency}} {{product.price}}</td>
+				</tr>
+        {% endfor %}
+
+
+
+
+				<tr class="total">
+					<td></td>
+
+					<td>Total: {{invoiceCurrency}} {{invoiceTotal}}</td>
+				</tr>
+
+        <tr>
+          <td>
+            <p>
+              {{invoice.notes}}
+            </p>
+          </td>
+        </tr>
+
+
+
+			</table>
+
+
+
+		</div>
+	</body>
 </html>

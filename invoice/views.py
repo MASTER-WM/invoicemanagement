@@ -15,6 +15,8 @@ from django.http import HttpResponse
 
 from .filter import *
 
+from jalali_date import datetime2jalali, date2jalali
+
 import pdfkit
 from django.template.loader import get_template
 import os
@@ -112,6 +114,15 @@ def products(request):
 
     return render(request, 'invoice/products.html', context)
 
+def productss(request):
+    context = {}
+    products = Product.objects.all()
+    filter = ProductFilter(request.GET, queryset=products)
+    products = filter.qs
+
+    context['products'] = products
+
+    return render(request, 'invoice/products.html', context)
 
 
 @login_required
@@ -180,6 +191,7 @@ def createBuildInvoice(request, slug):
     context['invoice'] = invoice
     context['products'] = products
 
+
     if request.method == 'GET':
         prod_form  = ProductForm()
         inv_form = InvoiceForm(instance=invoice)
@@ -237,14 +249,14 @@ def viewPDFInvoice(request, slug):
     #Get Client Settings
     p_settings = Settings.objects.get(clientName='شرکت هیدرو صنعت پاسارگاد')
 
-    #Calculate the Invoice Total
-    invoiceCurrency = ''
-    invoiceTotal = 0.0
-    if len(products) > 0:
-        for x in products:
-            y = float(x.quantity) * float(x.price)
-            invoiceTotal += y
-            invoiceCurrency = x.currency
+    # #Calculate the Invoice Total
+    # invoiceCurrency = ''
+    # invoiceTotal = 0.0
+    # if len(products) > 0:
+    #     for x in products:
+    #         y = float(x.quantity) * float(x.price)
+    #         invoiceTotal += y
+    #         invoiceCurrency = x.currency
 
 
 
@@ -252,8 +264,8 @@ def viewPDFInvoice(request, slug):
     context['invoice'] = invoice
     context['products'] = products
     context['p_settings'] = p_settings
-    context['invoiceTotal'] = "{:.2f}".format(invoiceTotal)
-    context['invoiceCurrency'] = invoiceCurrency
+    # context['invoiceTotal'] = "{:.2f}".format(invoiceTotal)
+    # context['invoiceCurrency'] = invoiceCurrency
 
     return render(request, 'invoice/invoice-template.html', context)
 
@@ -274,12 +286,12 @@ def viewDocumentInvoice(request, slug):
     #Get Client Settings
     p_settings = Settings.objects.get(clientName='شرکت هیدرو صنعت پاسارگاد')
 
-    #Calculate the Invoice Total
-    invoiceTotal = 0.0
-    if len(products) > 0:
-        for x in products:
-            y = float(x.quantity) * float(x.price)
-            invoiceTotal += y
+    # #Calculate the Invoice Total
+    # invoiceTotal = 0.0
+    # if len(products) > 0:
+    #     for x in products:
+    #         y = float(x.quantity) * float(x.price)
+    #         invoiceTotal += y
 
 
 
@@ -287,7 +299,7 @@ def viewDocumentInvoice(request, slug):
     context['invoice'] = invoice
     context['products'] = products
     context['p_settings'] = p_settings
-    context['invoiceTotal'] = "{:.2f}".format(invoiceTotal)
+    # context['invoiceTotal'] = "{:.2f}".format(invoiceTotal)
 
     #The name of your PDF file
     filename = '{}.pdf'.format(invoice.uniqueId)
@@ -344,12 +356,12 @@ def emailDocumentInvoice(request, slug):
     #Get Client Settings
     p_settings = Settings.objects.get(clientName='شرکت هیدرو صنعت پاسارگاد')
 
-    #Calculate the Invoice Total
-    invoiceTotal = 0.0
-    if len(products) > 0:
-        for x in products:
-            y = float(x.quantity) * float(x.price)
-            invoiceTotal += y
+    # #Calculate the Invoice Total
+    # invoiceTotal = 0.0
+    # if len(products) > 0:
+    #     for x in products:
+    #         y = float(x.quantity) * float(x.price)
+    #         invoiceTotal += y
 
 
 
@@ -432,13 +444,14 @@ def deleteClient(request, slug):
 
 
 def deleteProduct(request, slug):
+
     try:
         Product.objects.get(slug=slug).delete()
     except:
         messages.error(request, 'مشکلی پیش آمده است')
-        return redirect('create-build-invoice')
+        return redirect('products')
 
-    return redirect('create-build-invoice')
+    return redirect('products')
 
 
 
@@ -447,6 +460,9 @@ def companySettings(request):
     company = Settings.objects.get(clientName='شرکت هیدرو صنعت پاسارگاد')
     context = {'company': company}
     return render(request, 'invoice/company-settings.html', context)
+
+def my_view(request):
+    jalali_join = datetime2jalali(request.user.date_joined).strftime('%y/%m/%d _ %H:%M:%S')
 
 
 

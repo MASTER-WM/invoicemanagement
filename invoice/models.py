@@ -3,6 +3,7 @@ from django.template.defaultfilters import slugify
 from django.utils import timezone
 from uuid import uuid4
 from django.contrib.auth.models import User
+from jalali_date import date2jalali,datetime2jalali
 
 
 
@@ -66,6 +67,12 @@ class Invoice(models.Model):
     slug = models.SlugField(max_length=500, unique=True, blank=True, null=True)
     date_created = models.DateTimeField(blank=True, null=True)
     last_updated = models.DateTimeField(blank=True, null=True)
+
+    def get_jalali_createdate(self):
+        return date2jalali(self.date_created)
+
+    def get_jalali_duedate(self):
+        return date2jalali(self.dueDate)
 
 
     def __str__(self):

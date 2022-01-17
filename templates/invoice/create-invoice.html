@@ -1,6 +1,7 @@
 {% extends 'partials/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load jalali_tags %}
 
 
 {% block css %}
@@ -46,7 +47,7 @@
                   <tr>
 
                     <th>عنوان</th>
-                    <th>تغداد</th>
+                    <th>تعداد</th>
                     <th>واحد</th>
                     <th>توضیحات</th>
                     <th scope="col">حذف</th>
@@ -83,6 +84,8 @@
 
               {% csrf_token %}
               {% crispy inv_form %}
+
+                </span>
 
             </form>
 
