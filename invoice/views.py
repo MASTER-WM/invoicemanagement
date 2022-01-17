@@ -201,7 +201,7 @@ def createBuildInvoice(request, slug):
 
             messages.success(request, "محصول با موفقیت اضافه شد")
             return redirect('create-build-invoice', slug=slug)
-        elif inv_form.is_valid and  request.POST:
+        elif inv_form.is_valid and 'title' in request.POST:
             inv_form.save()
 
             messages.success(request, "سفارش با موفقیت آپدیت شد")
