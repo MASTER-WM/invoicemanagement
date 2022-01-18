@@ -114,16 +114,6 @@ def products(request):
 
     return render(request, 'invoice/products.html', context)
 
-def productss(request):
-    context = {}
-    products = Product.objects.all()
-    filter = ProductFilter(request.GET, queryset=products)
-    products = filter.qs
-
-    context['products'] = products
-
-    return render(request, 'invoice/products.html', context)
-
 
 @login_required
 def clients(request):

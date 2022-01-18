@@ -23,7 +23,7 @@
 			}
 
 			.invoice-box table {
-				text-align:right;
+
 				width: 100%;
 				line-height: inherit;
 
@@ -119,7 +119,7 @@
 						<table>
 
               <tr >
-      					<td><h1>Invoice: {{p_settings.clientName}}</h1></td>
+      					<td><h1>اعلام سفارش</h1></td>
       				</tr>
 
 							<tr>
@@ -128,9 +128,7 @@
 								</td>
 
 								<td>
-									Invoice #: {{invoice.number}}<br />
-									Created: {{invoice.date_created|date}}<br />
-									Due: {{invoice.dueDate}}
+									شماره سفارش: {{invoice.number}}<br />
 								</td>
 							</tr>
 						</table>
@@ -141,18 +139,9 @@
 					<td colspan="2">
 						<table>
 							<tr>
-								<td>
-									{{p_settings.clientName}}<br />
-									{{p_settings.addressLine1}}<br />
-									{{p_settings.province}}, {{p_settings.postalCode}} <br/ >
-                  {{p_settings.emailAddress}} <br/ >
-                  {{p_settings.phoneNumber}}
-								</td>
 
 								<td>
                   {{invoice.client.clientName}}<br />
-									{{invoice.client.addressLine1}}<br />
-									{{invoice.client.province}}, {{invoice.client.postalCode}}<br />
 									{{invoice.client.emailAddress}} <br/ >
                   {{invoice.client.phoneNumber}}
 								</td>
@@ -163,27 +152,25 @@
 
 
 				<tr class="heading">
-					<td>Item</td>
-          <td>Quantity</td>
-					<td>Price</td>
+					<td>عنوان محصول</td>
+										<td>تاریخ اعلام</td>
+					<td>تاریخ تحویل</td>
+
+          <td>تعداد</td>
+					<td>واحد</td>
 				</tr>
 
         {% for product in products %}
 				<tr class="item">
 					<td>{{product.title}}</td>
+					<td>{{invoice.get_jalali_createdate}}</td>
+					<td> {{invoice.get_jalali_duedate}}</td>
           <td>{{product.quantity}}</td>
-					<td>{{product.currency}} {{product.price}}</td>
+					<td>{{product.unit}}</td>
 				</tr>
         {% endfor %}
 
 
-
-
-				<tr class="total">
-					<td></td>
-
-					<td>Total: {{invoiceCurrency}} {{invoiceTotal}}</td>
-				</tr>
 
         <tr>
           <td>
