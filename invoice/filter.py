@@ -6,3 +6,4 @@ class ProductFilter(django_filters.FilterSet):
 
 class InvoiceFilter(django_filters.FilterSet):
     title = django_filters.CharFilter(field_name='title')
+    create_Date = django_filters.NumberFilter(field_name='create_Date', lookup_expr='gte')

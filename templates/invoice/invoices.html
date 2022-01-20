@@ -29,6 +29,8 @@
 			<form action="", class="form-control mb-3">
 
 				<input label="عنوان" type="search" name="title" class="form-control-sm">
+                				<input label="تاریخ" type="search" name="create_Date" class="form-control-sm">
+
 
 		    <button class="btn btn-primary" type="submit">جست و جو</button>
 		  </form>
@@ -48,8 +50,9 @@
         <tr>
           <th>شماره سفارش</th>
           <th>نام مشتری</th>
-          <th>تاریخ ثبت</th>
-          <th>تاریخ سررسید</th>
+                    <th>نام محصول</th>
+                    <th>تعداد محصول</th>
+                    <th>تاریخ ابلاغ</th>
           <th>شماره / کد درخواست</th>
           <th>حذف</th>
           <th>نمایش</th>
@@ -61,8 +64,9 @@
       <tr>
         <td>{{invoice.title}}</td>
         <td>{{invoice.client.clientName}}</td>
+        <td>{{product.title}}</td>
+                <td>{{invoice.product.quantity}}</td>
         <td>{{invoice.get_jalali_createdate}}</td>
-        <td>{{invoice.get_jalali_duedate}}</td>
         <td>{{invoice.request_code}}</td>
         <td>
           <a href="{% url 'delete-invoice' invoice.slug %}"><button class="btn btn-danger"> حذف </button></a>

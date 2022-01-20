@@ -92,11 +92,14 @@ def invoices(request):
     context = {}
     invoices = Invoice.objects.all()
 
-    filter = InvoiceFilter(request.GET, queryset=invoices)
-    invoices = filter.qs
+    filter_title = InvoiceFilter(request.GET, queryset=invoices)
+    invoices = filter_title.qs
+    filter_date = InvoiceFilter(request.GET, queryset=invoices)
+    invoices = filter_date.qs
 
     context['invoices'] = invoices
-    context['filter'] = filter
+    context['filter_title'] = filter_title
+    context['filter_date'] = filter_date
 
 
     return render(request, 'invoice/invoices.html',
