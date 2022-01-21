@@ -1,9 +1,25 @@
 import django_filters
+from django_filters import DateFilter
 from .models import *
 
-class ProductFilter(django_filters.FilterSet):
-    price_filter = django_filters.NumberFilter(field_name='price', lookup_expr='gte')
-
 class InvoiceFilter(django_filters.FilterSet):
-    title = django_filters.CharFilter(field_name='title')
-    create_Date = django_filters.NumberFilter(field_name='create_Date', lookup_expr='gte')
+
+    CHOICES = (
+        ('Accen', 'صعودی'),
+        ('Deccen', 'نزولی')
+
+        )
+
+
+
+    title = django_filters.CharFilter(label = 'عنوان:', field_name='title', lookup_expr = 'icontains')
+    client__clientName = django_filters.CharFilter(label = 'نام مشتری:', lookup_expr = 'icontains')
+    # create_Date_gt = DateFilter(label = 'سفارشات بعد از تاریخ:', field_name='create_Date', lookup_expr='gte')
+    # create_Date_lt = DateFilter(label = 'سفارشات قبل از تاریخ:', field_name='create_Date', lookup_expr='lte')
+    request_code_filter = django_filters.NumberFilter(label = 'شماره درخواست:', field_name = 'request_code', lookup_expr = 'icontains')
+    ordering = django_filters.ChoiceFilter(label='مرتب سازی زمانی', choices = CHOICES, method='filter_by_order')
+
+
+    def filter_by_order(self,queryset, name, value):
+        expression = 'create_Date' if value == 'Accen' else '-create_Date'
+        return queryset.order_by(expression)

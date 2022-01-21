@@ -91,16 +91,14 @@ def dashboard(request):
 def invoices(request):
     context = {}
     invoices = Invoice.objects.all()
+    products = invoices.invoiceRelated.all()
+    filter = InvoiceFilter(request.GET, queryset=invoices)
+    invoices = filter.qs
 
-    filter_title = InvoiceFilter(request.GET, queryset=invoices)
-    invoices = filter_title.qs
-    filter_date = InvoiceFilter(request.GET, queryset=invoices)
-    invoices = filter_date.qs
 
     context['invoices'] = invoices
-    context['filter_title'] = filter_title
-    context['filter_date'] = filter_date
-
+    context['products'] = products
+    context['filter'] = filter
 
     return render(request, 'invoice/invoices.html',
                   context)
@@ -110,7 +108,6 @@ def invoices(request):
 def products(request):
     context = {}
     products = Product.objects.all()
-    filter = ProductFilter(request.GET, queryset=products)
     products = filter.qs
 
     context['products'] = products
@@ -122,6 +119,9 @@ def products(request):
 def clients(request):
     context = {}
     clients = Client.objects.all()
+    filter_name = InvoiceFilter(request.GET, queryset=clients)
+    clients = filter_name.qs
+    context['filter_name'] = filter_name
     context['clients'] = clients
 
     if request.method == 'GET':

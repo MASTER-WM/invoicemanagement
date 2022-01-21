@@ -1,9 +1,13 @@
 {% extends 'partials/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-
+{% load bootstrap %}
 
 {% block css %}
+
+<link rel="stylesheet" href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}">
+		<script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
+
 <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
 {% endblock %}
 
@@ -28,10 +32,10 @@
 
 			<form action="", class="form-control mb-3">
 
-				<input label="عنوان" type="search" name="title" class="form-control-sm">
-                				<input label="تاریخ" type="search" name="create_Date" class="form-control-sm">
 
+              {{filter.form|bootstrap}}
 
+            <br>
 		    <button class="btn btn-primary" type="submit">جست و جو</button>
 		  </form>
 
@@ -64,8 +68,8 @@
       <tr>
         <td>{{invoice.title}}</td>
         <td>{{invoice.client.clientName}}</td>
-        <td>{{product.title}}</td>
-                <td>{{invoice.product.quantity}}</td>
+        <td>{{products.title}}</td>
+                <td>{{invoice.products.quantity}}</td>
         <td>{{invoice.get_jalali_createdate}}</td>
         <td>{{invoice.request_code}}</td>
         <td>

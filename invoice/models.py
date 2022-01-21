@@ -69,7 +69,7 @@ class Invoice(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def get_jalali_createdate(self):
-        return date2jalali(self.date_created)
+        return date2jalali(self.create_Date)
 
     def get_jalali_duedate(self):
         return date2jalali(self.dueDate)
@@ -105,7 +105,7 @@ class Product(models.Model):
     unit = models.CharField(null=True, blank=True, max_length=20)
 
     #Related Fields
-    invoice = models.ForeignKey(Invoice, blank=True, null=True, on_delete=models.CASCADE)
+    invoice = models.ForeignKey(Invoice, blank=True, null=True, on_delete=models.CASCADE, related_name = 'invoiceRelated')
 
     #Utility fields
     uniqueId = models.CharField(null=True, blank=True, max_length=100)
