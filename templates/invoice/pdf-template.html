@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>سفارش</title>
-    <link href="{% static 'assets/pdf/assets/css/fonts.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/fonts.css' %}" rel="stylesheet">
 
 		<style>
 			.invoice-box {
@@ -106,11 +106,6 @@
 			.invoice-box.rtl table tr td:nth-child(2) {
 				text-align: right;
 			}
-		@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
-    }
-    body {
-        font-family: 'Amiri', serif;
-    }
 		</style>
 	</head>
 
@@ -136,6 +131,12 @@
 									<img src="https://s4.uupload.ir/files/whatsapp_image_2022-01-22_at_12.22.07_pm-removebg_5abg.png" style= "position: relative;bottom: 100px;width: 100%;max-width: 100px;" />
 								</td>
 
+							<tr style="position: relative;text-align: left;right: 250px;bottom: 190px;">
+							<td>
+								<h2>شماره فرم: AF-07-03</h2>
+							</td>
+						</tr>
+
 
 							</tr>
 						</table>
@@ -148,13 +149,16 @@
 							<tr >
 
 								<td>
-                  {{invoice.client.clientName}}<br />
+									<h3>نام مشتری: {{invoice.client.clientName}}  </h3><br />
 									{{invoice.client.emailAddress}} <br/ >
                   {{invoice.client.phoneNumber}}
 								</td>
 
-								<td>
-									شماره سفارش: {{invoice.number}}<br />
+								<td ><h3>
+									شماره سفارش: {{invoice.title}}<br />
+<br>
+									شماره درخواست: {{invoice.request_code}}
+								</h3>
 								</td>
 
 							</tr>
@@ -180,25 +184,7 @@
 					<td>{{product.unit}}</td>
 				</tr>
         {% endfor %}
-<tr style="
-    position: relative;
-    bottom: 100px;">
-	<td class="rectangle" >
-		تهیه کننده: بازرگانی و فروش
-<br>
-		<br>
-		نام/امضا:
 
-	</td>
-
-          <td class="rectangle" style="position: relative;right: 1;right: 150px;">
-تایید کننده: مدیریت عامل
-<br>
-			  <br>
-			  نام/امضا
-          </td>
-
-</tr>
 
 
 			</table>

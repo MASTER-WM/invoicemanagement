@@ -131,6 +131,12 @@
 									<img src="https://s4.uupload.ir/files/whatsapp_image_2022-01-22_at_12.22.07_pm-removebg_5abg.png" style= "position: relative;bottom: 100px;width: 100%;max-width: 100px;" />
 								</td>
 
+							<tr style="position: relative;text-align: left;right: 250px;bottom: 190px;">
+							<td>
+								<h1>شماره فرم: AF-07-03</h1>
+							</td>
+						</tr>
+
 
 							</tr>
 						</table>
@@ -143,13 +149,16 @@
 							<tr >
 
 								<td>
-                  {{invoice.client.clientName}}<br />
+									<h3>نام مشتری: {{invoice.client.clientName}}  </h3><br />
 									{{invoice.client.emailAddress}} <br/ >
                   {{invoice.client.phoneNumber}}
 								</td>
 
-								<td>
-									شماره سفارش: {{invoice.number}}<br />
+								<td ><h3>
+									شماره سفارش: {{invoice.title}}<br />
+<br>
+									شماره درخواست: {{invoice.request_code}}
+								</h3>
 								</td>
 
 							</tr>

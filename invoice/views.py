@@ -360,7 +360,7 @@ def emailDocumentInvoice(request, slug):
     context['invoice'] = invoice
     context['products'] = products
     context['p_settings'] = p_settings
-    context['invoiceTotal'] = "{:.2f}".format(invoiceTotal)
+    # context['invoiceTotal'] = "{:.2f}".format(invoiceTotal)
 
     #The name of your PDF file
     filename = '{}.pdf'.format(invoice.uniqueId)
