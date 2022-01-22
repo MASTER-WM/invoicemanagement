@@ -39,7 +39,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'enter-your-app-secret-key-here-a-super-long-super-hard-to-guess-secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -69,7 +69,7 @@ JALALI_DATE_DEFAULTS = {
     'Static': {
         'js': [
             # loading datepicker
-            'admin/js/django_jalali.min.js',
+            'js/django_jalali.min.js',
             # OR
             # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
             # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
@@ -79,7 +79,7 @@ JALALI_DATE_DEFAULTS = {
         ],
         'css': {
             'all': [
-                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
+                'jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
             ]
         }
     },
@@ -152,9 +152,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa-ir'
 
-TIME_ZONE = 'Africa/Johannesburg'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
