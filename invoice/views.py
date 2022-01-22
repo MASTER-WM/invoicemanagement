@@ -91,13 +91,11 @@ def dashboard(request):
 def invoices(request):
     context = {}
     invoices = Invoice.objects.all()
-    products = invoices.invoiceRelated.all()
     filter = InvoiceFilter(request.GET, queryset=invoices)
     invoices = filter.qs
 
 
     context['invoices'] = invoices
-    context['products'] = products
     context['filter'] = filter
 
     return render(request, 'invoice/invoices.html',

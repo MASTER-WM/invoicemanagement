@@ -1,180 +1,211 @@
+{% load static %}
+
+
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
-  <head>
-    <meta charset="utf-8">
-    <title>{{p_settings.clientName}}</title>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>سفارش</title>
+    <link href="{% static 'assets/pdf/assets/css/fonts.css' %}" rel="stylesheet">
 
-    <style >
+		<style>
+			.invoice-box {
+				direction: rtl;
+				max-width: 950px;
+				margin: auto;
+				padding: 30px;
+				border: 1px solid #eee;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+				font-size: 16px;
+				line-height: 24px;
+				font-family: IRANSans !important;
+				color: #555;
+			}
 
-      .container {
-        margin-left: 50px;
-        margin-right: 50px;
-      }
+			.invoice-box table {
 
-  table {
-    caption-side: bottom;
-    border-collapse: collapse; }
+				width: 100%;
+				line-height: inherit;
 
-    th {
-      text-align: inherit;
-      text-align: -webkit-match-parent; }
+			}
 
-    thead,
-    tbody,
-    tfoot,
-    tr,
-    td,
-    th {
-      border-color: inherit;
-      border-style: solid;
-      border-width: 0; }
+			.invoice-box table td {
+				padding: 5px;
+				vertical-align: top;
+			}
 
-      .table {
-        --bs-table-bg: transparent;
-        --bs-table-striped-color: #495057;
-        --bs-table-striped-bg: #f8f9fa;
-        --bs-table-active-color: #495057;
-        --bs-table-active-bg: #f8f9fa;
-        --bs-table-hover-color: #495057;
-        --bs-table-hover-bg: #f8f9fa;
-        width: 100%;
-        margin-bottom: 1rem;
-        color: #495057;
-        vertical-align: top;
-        border-color: #eff2f7; }
-        .table > :not(caption) > * > * {
-          padding: 0.75rem 0.75rem;
-          background-color: var(--bs-table-bg);
-          background-image: -webkit-gradient(linear, right top, right bottom, from(var(--bs-table-accent-bg)), to(var(--bs-table-accent-bg)));
-          background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));
-          border-bottom-width: 0px; }
-        .table > tbody {
-          vertical-align: inherit; }
-        .table > thead {
-          vertical-align: bottom; }
-        .table > :not(:last-child) > :last-child > * {
-          border-bottom-color: #eff2f7; }
+			.invoice-box table tr td:nth-child(2) {
+				text-align: right;
+			}
 
-  .table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; }
+			.invoice-box table tr.top table td {
+				padding-bottom: 20px;
+			}
 
-    .d-table {
-      display: table !important; }
+			.invoice-box table tr.top table td.title {
+				font-size: 45px;
+				line-height: 45px;
+				color: #333;
+			}
 
-      .table th {
-        font-weight: 600; }
+			.invoice-box table tr.information table td {
+				padding-bottom: 40px;
+			}
 
+			.invoice-box table tr.heading td {
+				background: #eee;
+				border-bottom: 1px solid #ddd;
+				font-weight: bold;
+			}
 
-</style>
-  </head>
+			.invoice-box table tr.details td {
+				padding-bottom: 20px;
+			}
 
-  <body>
+			.invoice-box table tr.item td {
+				border-bottom: 1px solid #eee;
+			}
 
-    <div class="container">
-      <h1>سفارش: {{p_settings.clientName}}</h1>
-      <br>
-      <hr>
-      <br>
-      <br>
+			.invoice-box table tr.item.last td {
+				border-bottom: none;
+			}
 
+			.invoice-box table tr.total td:nth-child(2) {
+				border-top: 2px solid #eee;
+				font-weight: bold;
+			}
 
-      <div class="table-responsive">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td><img src="https://host.tatiblockchain.co.za/img/skolo_logo.png" style="width: 100%; max-width: 100px" /></td>
-              <td></td>
-              <td></td>
-              <td>
-                سفارش #: <strong>{{invoice.number}}</strong><br />
-                ساخت: {{invoice.date_created|date}}<br />
-                Due: {{invoice.dueDate}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+			@media only screen and (max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: right;
+				}
 
+				.invoice-box table tr.information table td {
+					width: 100%;
+					display: block;
+					text-align: right;
+				}
+			}
+			.rectangle {
+   width: 350px;
+   height: 150px;
+}
 
+			/** RTL **/
+			.invoice-box.rtl {
+				direction: rtl;
+				font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			}
 
-      <br>
+			.invoice-box.rtl table {
+				text-align: right;
+			}
 
-
-      <div class="table-responsive">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>
-                <strong>{{p_settings.clientName}}</strong> <br />
-                {{p_settings.addressLine1}}<br />
-                {{p_settings.province}}, {{p_settings.postalCode}} <br/ >
-                {{p_settings.emailAddress}} <br/ >
-                {{p_settings.phoneNumber}}
-                <br>
-                <br>
-                شماره مالیاتی: {{p_settings.taxNumber}}
-              </td>
-
-              <td>
-                <strong>{{invoice.client.clientName}}</strong> <br />
-                {{invoice.client.addressLine1}}<br />
-                {{invoice.client.province}}, {{invoice.client.postalCode}}<br />
-                {{invoice.client.emailAddress}} <br/ >
-                {{invoice.client.phoneNumber}}
-                <br>
-                <br>
-                شماره مالیاتی: {{invoice.client.taxNumber}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-
-      <br>
-      <br>
-      <h1>Invoice Items</h1>
-      <br>
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Quantity</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-
-
-          <tbody>
-            {% for product in products %}
-            <tr>
-              <td>{{product.title}}</td>
-              <td>{{product.quantity}}</td>
-    					<td>{{product.currency}} {{product.price}}</td>
-            </tr>
-            {% endfor %}
-            <tr>
-              <td></td>
-              <td></td>
-              <td> <strong> مجموع: {{invoiceTotal}} </strong> </td>
-            </tr>
-          </tbody>
-
-        </table>
-      </div>
-      <br>
-      <br>
-      <p>
-        {{invoice.notes}}
-      </p>
+			.invoice-box.rtl table tr td:nth-child(2) {
+				text-align: right;
+			}
+		@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+    }
+    body {
+        font-family: 'Amiri', serif;
+    }
+		</style>
+	</head>
 
 
 
 
+	<body>
+		<div class="invoice-box">
 
-    </div>
 
-  </body>
+
+			<table cellpadding="0" cellspacing="0">
+				<tr class="top">
+					<td colspan="2">
+						<table>
+
+              <tr >
+      					<td><h1 style="position: relative; right: 350px;"> اعلام سفارش</h1></td>
+      				</tr>
+
+							<tr>
+								<td class="title">
+									<img src="https://s4.uupload.ir/files/whatsapp_image_2022-01-22_at_12.22.07_pm-removebg_5abg.png" style= "position: relative;bottom: 100px;width: 100%;max-width: 100px;" />
+								</td>
+
+
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information" style="position: relative;bottom: 100px;right: 60px;">
+					<td colspan="2">
+						<table>
+							<tr >
+
+								<td>
+                  {{invoice.client.clientName}}<br />
+									{{invoice.client.emailAddress}} <br/ >
+                  {{invoice.client.phoneNumber}}
+								</td>
+
+								<td>
+									شماره سفارش: {{invoice.number}}<br />
+								</td>
+
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+
+				<tr class="heading" style="position: relative;bottom: 120px;">
+					<td>عنوان محصول</td>
+					<td>تاریخ اعلام</td>
+					<td>تاریخ تحویل</td>
+          			<td>تعداد</td>
+					<td>واحد</td>
+				</tr>
+
+        {% for product in products %}
+				<tr class="item" style="position: relative;bottom: 120px;">
+					<td>{{product.title}}</td>
+					<td>{{invoice.get_jalali_createdate}}</td>
+					<td> {{invoice.get_jalali_duedate}}</td>
+          <td>{{product.quantity}}</td>
+					<td>{{product.unit}}</td>
+				</tr>
+        {% endfor %}
+<tr style="
+    position: relative;
+    bottom: 100px;">
+	<td class="rectangle" >
+		تهیه کننده: بازرگانی و فروش
+<br>
+		<br>
+		نام/امضا:
+
+	</td>
+
+          <td class="rectangle" style="position: relative;right: 1;right: 150px;">
+تایید کننده: مدیریت عامل
+<br>
+			  <br>
+			  نام/امضا
+          </td>
+
+</tr>
+
+
+			</table>
+
+
+
+		</div>
+
+	</body>
 </html>

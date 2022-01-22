@@ -11,7 +11,7 @@
 		<style>
 			.invoice-box {
 				direction: rtl;
-				max-width: 800px;
+				max-width: 950px;
 				margin: auto;
 				padding: 30px;
 				border: 1px solid #eee;
@@ -35,7 +35,7 @@
 			}
 
 			.invoice-box table tr td:nth-child(2) {
-				text-align: left;
+				text-align: right;
 			}
 
 			.invoice-box table tr.top table td {
@@ -79,15 +79,19 @@
 				.invoice-box table tr.top table td {
 					width: 100%;
 					display: block;
-					text-align: center;
+					text-align: right;
 				}
 
 				.invoice-box table tr.information table td {
 					width: 100%;
 					display: block;
-					text-align: center;
+					text-align: right;
 				}
 			}
+			.rectangle {
+   width: 350px;
+   height: 150px;
+}
 
 			/** RTL **/
 			.invoice-box.rtl {
@@ -100,7 +104,7 @@
 			}
 
 			.invoice-box.rtl table tr td:nth-child(2) {
-				text-align: left;
+				text-align: right;
 			}
 		</style>
 	</head>
@@ -119,49 +123,51 @@
 						<table>
 
               <tr >
-      					<td><h1>اعلام سفارش</h1></td>
+      					<td><h1 style="position: relative; right: 350px;"> اعلام سفارش</h1></td>
       				</tr>
 
 							<tr>
 								<td class="title">
-									<img src="https://host.tatiblockchain.co.za/img/skolo_logo.png" style="width: 100%; max-width: 100px" />
+									<img src="https://s4.uupload.ir/files/whatsapp_image_2022-01-22_at_12.22.07_pm-removebg_5abg.png" style= "position: relative;bottom: 100px;width: 100%;max-width: 100px;" />
 								</td>
 
-								<td>
-									شماره سفارش: {{invoice.number}}<br />
-								</td>
+
 							</tr>
 						</table>
 					</td>
 				</tr>
 
-				<tr class="information">
+				<tr class="information" style="position: relative;bottom: 100px;right: 60px;">
 					<td colspan="2">
 						<table>
-							<tr>
+							<tr >
 
 								<td>
                   {{invoice.client.clientName}}<br />
 									{{invoice.client.emailAddress}} <br/ >
                   {{invoice.client.phoneNumber}}
 								</td>
+
+								<td>
+									شماره سفارش: {{invoice.number}}<br />
+								</td>
+
 							</tr>
 						</table>
 					</td>
 				</tr>
 
 
-				<tr class="heading">
+				<tr class="heading" style="position: relative;bottom: 120px;">
 					<td>عنوان محصول</td>
-										<td>تاریخ اعلام</td>
+					<td>تاریخ اعلام</td>
 					<td>تاریخ تحویل</td>
-
-          <td>تعداد</td>
+          			<td>تعداد</td>
 					<td>واحد</td>
 				</tr>
 
         {% for product in products %}
-				<tr class="item">
+				<tr class="item" style="position: relative;bottom: 120px;">
 					<td>{{product.title}}</td>
 					<td>{{invoice.get_jalali_createdate}}</td>
 					<td> {{invoice.get_jalali_duedate}}</td>
@@ -169,17 +175,25 @@
 					<td>{{product.unit}}</td>
 				</tr>
         {% endfor %}
+<tr style="
+    position: relative;
+    bottom: 100px;">
+	<td class="rectangle" >
+		تهیه کننده: بازرگانی و فروش
+<br>
+		<br>
+		نام/امضا:
 
+	</td>
 
-
-        <tr>
-          <td>
-            <p>
-              {{invoice.notes}}
-            </p>
+          <td class="rectangle" style="position: relative;right: 1;right: 150px;">
+تایید کننده: مدیریت عامل
+<br>
+			  <br>
+			  نام/امضا
           </td>
-        </tr>
 
+</tr>
 
 
 			</table>
@@ -187,5 +201,6 @@
 
 
 		</div>
+
 	</body>
 </html>
