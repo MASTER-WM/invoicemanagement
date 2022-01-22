@@ -12,7 +12,7 @@ class InvoiceFilter(django_filters.FilterSet):
 
 
 
-    title = django_filters.CharFilter(label = 'عنوان:', field_name='title', lookup_expr = 'icontains')
+    title = django_filters.CharFilter(label = 'شماره سفارش:', field_name='title', lookup_expr = 'icontains')
     client__clientName = django_filters.CharFilter(label = 'نام مشتری:', lookup_expr = 'icontains')
     # create_Date_gt = DateFilter(label = 'سفارشات بعد از تاریخ:', field_name='create_Date', lookup_expr='gte')
     # create_Date_lt = DateFilter(label = 'سفارشات قبل از تاریخ:', field_name='create_Date', lookup_expr='lte')

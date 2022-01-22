@@ -30,7 +30,7 @@
 	<div class="col">
 		<div class="card card-body ">
           <label>
-            سیستم گزارش گیری سفارشات
+            <h3>سیستم گزارش گیری سفارشات</h3>
           </label><br>
 			<form action="", class="form-control mb-3">
 
@@ -56,8 +56,6 @@
         <tr>
           <th>شماره سفارش</th>
           <th>نام مشتری</th>
-                    <th>نام محصول</th>
-                    <th>تعداد محصول</th>
                     <th>تاریخ ابلاغ</th>
           <th>شماره / کد درخواست</th>
           <th>حذف</th>
@@ -70,8 +68,7 @@
       <tr>
         <td>{{invoice.title}}</td>
         <td>{{invoice.client.clientName}}</td>
-        <td>{{products.title}}</td>
-                <td>{{invoice.products.quantity}}</td>
+
         <td>{{invoice.get_jalali_createdate}}</td>
         <td>{{invoice.request_code}}</td>
         <td>
