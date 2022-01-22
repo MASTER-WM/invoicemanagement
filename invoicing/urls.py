@@ -11,7 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #INVOICE URLS
-    path('', invoice_views.index, name='index'),
+    path('', invoice_views.login, name='index'),
     path('invoice/',include('invoice.urls')),
 ]
 
