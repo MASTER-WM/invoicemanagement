@@ -69,7 +69,7 @@ JALALI_DATE_DEFAULTS = {
     'Static': {
         'js': [
             # loading datepicker
-            'js/django_jalali.min.js',
+            'assets/js/django_jalali.min.js',
             # OR
             # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
             # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
@@ -79,7 +79,7 @@ JALALI_DATE_DEFAULTS = {
         ],
         'css': {
             'all': [
-                'jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
+                'assets/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
             ]
         }
     },
