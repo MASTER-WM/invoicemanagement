@@ -18,6 +18,7 @@ class InvoiceFilter(django_filters.FilterSet):
     # create_Date_lt = DateFilter(label = 'سفارشات قبل از تاریخ:', field_name='create_Date', lookup_expr='lte')
     request_code_filter = django_filters.NumberFilter(label = 'شماره درخواست:', field_name = 'request_code', lookup_expr = 'icontains')
     ordering = django_filters.ChoiceFilter(label='مرتب سازی زمانی', choices = CHOICES, method='filter_by_order')
+    invoiceRelated__title = django_filters.CharFilter(label = 'نام محصول:', lookup_expr = 'icontains')
 
 
     def filter_by_order(self,queryset, name, value):

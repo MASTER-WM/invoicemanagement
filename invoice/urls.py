@@ -8,6 +8,7 @@ path('dashboard',views.dashboard, name='dashboard'),
 path('invoices',views.invoices, name='invoices'),
 path('products',views.products, name='products'),
 path('clients',views.clients, name='clients'),
+path('research',views.research, name='research'),
 
 #Create URL Paths
 path('invoices/create',views.createInvoice, name='create-invoice'),

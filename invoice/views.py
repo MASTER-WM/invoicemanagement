@@ -84,6 +84,19 @@ def dashboard(request):
     # context['paidInvoices'] = paidInvoices
     return render(request, 'invoice/dashboard.html')
 
+@login_required
+def research(request):
+    context = {}
+    invoices = Invoice.objects.all()
+    filter = InvoiceFilter(request.GET, queryset=invoices)
+    invoices = filter.qs
+
+
+    context['invoices'] = invoices
+    context['filter'] = filter
+
+    return render(request, 'invoice/research.html',
+                  context)
 
 
 
@@ -91,9 +104,6 @@ def dashboard(request):
 def invoices(request):
     context = {}
     invoices = Invoice.objects.all()
-    filter = InvoiceFilter(request.GET, queryset=invoices)
-    invoices = filter.qs
-
 
     context['invoices'] = invoices
     context['filter'] = filter
