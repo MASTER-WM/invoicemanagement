@@ -106,7 +106,6 @@ def invoices(request):
 def products(request):
     context = {}
     products = Product.objects.all()
-    products = filter.qs
 
     context['products'] = products
 
