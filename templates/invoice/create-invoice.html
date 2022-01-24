@@ -37,9 +37,9 @@
 
         <div class="row">
           <div class="col-lg-12">
-            <h5 class="card-title">اضافه کردن محصول
-              <button href="#addProductModal" type="button" class="btn btn-link" data-bs-toggle="modal"> افزودن محصول </button>
-            </h5>
+            <a href="javascript:void()" data-toggle="modal" data-target="#addProductModal" class="btn btn-primary btn-event w-100">
+                                    <span class="align-middle"><i class="ti-plus"></i></span> ایجاد
+                                </a>
 
             {% if products|length > 0 %}
             <div class="table-responsive">
@@ -86,7 +86,6 @@
               {% csrf_token %}
               {% crispy inv_form %}
 
-                </span>
 
             </form>
 
@@ -163,6 +162,40 @@
         </form>
       </div>
     </div>
+        <div class="modal fade none-border" id="add-category">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"><strong>افزودن دسته بندی</strong></h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="control-label">نام دسته بندی</label>
+                                            <input class="form-control form-white" placeholder="نام را وارد کنید" type="text" name="category-name">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">انتخاب رنگ دسته بندی</label>
+                                            <select class="form-control form-white" data-placeholder="رنگ را انتخاب کنید ..." name="category-color">
+                                                <option value="success">سبز</option>
+                                                <option value="danger">قرمز</option>
+                                                <option value="info">آبی روشن</option>
+                                                <option value="pink">صورتی</option>
+                                                <option value="primary">آبی</option>
+                                                <option value="warning">زرد</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
+                                <button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">ذخیره</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
   </div>
 </div>
 
