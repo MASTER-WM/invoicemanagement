@@ -33,6 +33,10 @@ class UserLoginForm(forms.ModelForm):
 
 class ClientForm(forms.ModelForm):
 
+    clientCode = forms.CharField(
+        widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
+        required=False, label='کد مشتری')
+
     clientName = forms.CharField(
         widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
         required=True, label='نام مشتری')
@@ -61,9 +65,11 @@ class ClientForm(forms.ModelForm):
         widget=forms.NumberInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
         required=False, label='شماره مالیاتی')
 
+
+
     class Meta:
         model = Client
-        fields = ['clientName', 'clientLogo', 'addressLine1', 'province', 'postalCode', 'phoneNumber', 'emailAddress', 'taxNumber']
+        fields = ['clientCode','clientName',  'addressLine1',  'phoneNumber', 'emailAddress', 'taxNumber','province', 'postalCode','clientLogo' ]
 
 
 

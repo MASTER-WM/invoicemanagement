@@ -126,9 +126,9 @@ def products(request):
 def clients(request):
     context = {}
     clients = Client.objects.all()
-    filter_name = InvoiceFilter(request.GET, queryset=clients)
-    clients = filter_name.qs
-    context['filter_name'] = filter_name
+    filter = ClientFilter(request.GET, queryset=clients)
+    clients = filter.qs
+    context['filter'] = filter
     context['clients'] = clients
 
     if request.method == 'GET':
