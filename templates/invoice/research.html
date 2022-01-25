@@ -4,6 +4,7 @@
 {% load bootstrap %}
 
 {% block css %}
+
 {% endblock %}
 
 
@@ -11,51 +12,26 @@
 
 {% block main %}
 <div class="content-body">
+        <div class="container-fluid">
 
-<div class="row">
-	<div class="col">
-		<div class="card card-body ">
-          <label>
-            <h3>سیستم گزارش گیری سفارشات</h3>
-          </label><br>
 <!--			<form action="", class="form-control mb-3">-->
-
-
-<!--\  <div class="card">-->
-<!--                        <div class="card-header">-->
-<!--                            <h4 class="card-title">انتخاب تاریخ با Picker</h4>-->
-<!--                        </div>-->
-<!--                        <div class="card-body">-->
-<!--                            <p class="mb-1">پیش فرض</p>-->
-<!--                            <input data-jdp data-jdp-min-date="today" name="create_Date" class="form-control" id="datepicker-default">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--            <br>-->
-<!--		    <button class="btn btn-primary" type="submit">جست و جو</button>-->
-<!--		  </form>-->
-<div class="card-header">
                             <h4 class="card-title">گزارشات</h4>
-                        </div>
                         <div class="card-body">
                             <div class="basic-form">
                                 <form>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label>شماره سفارش</label>
-                                            <input type="number" class="form-control" name="title">
+                                            <input type="search" class="form-control input-rounded" name="title_filter" placeholder="شماره سفارش">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>نام مشتری</label>
-                                            <input type="text" class="form-control" name="client__clientName">
+                                            <input type="search" class="form-control input-rounded" name="client__clientName" placeholder="نام مشتری">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>شماره درخواست</label>
-                                            <input type="number" class="form-control" name="request_code_filter">
+                                            <input type="search" class="form-control input-rounded" name="request_code_filter" placeholder="شماره درخواست">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>نام محصول</label>
-                                            <input type="text" class="form-control" name="invoiceRelated__title">
+                                            <input type="search" class="form-control input-rounded" name="invoiceRelated__title" placeholder="نام محصول">
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">جست و جو</button>
@@ -63,8 +39,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-</div>
   <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-responsive-md">
@@ -84,12 +58,7 @@
                                     <tr>
 
                                         <td><strong>{{invoice.title}}</strong></td>
-                                        <td>
-                                            <div class="d-flex align-items-center"><img
-                                                    src="images/avatar/1.jpg" class="rounded-lg mr-2"
-                                                    width="24" alt=""/> <span class="w-space-no">{{invoice.client.clientName}}</span>
-                                            </div>
-                                        </td>
+                                        <td>{{invoice.client.clientName}}</td>
                                         <td>{{invoice.get_jalali_createdate}}</td>
                                         <td>{{invoice.request_code}}</td>
                                         <td>
@@ -109,9 +78,4 @@
   </div>
 {% endblock %}
 
-{% block scripts %}
-
-
-
-{% endblock %}
 

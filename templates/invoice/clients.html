@@ -9,30 +9,31 @@
 
 {% block main %}
 <div class="content-body">
+    <div class="container-fluid">
 
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">مشتریان</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-      <div class="btn-group me-2">
-        <button href="javascript:void()" data-toggle="modal" data-target="#addClientModal" class="btn btn-primary btn-event w-100">افزودن مشتری جدید</button>
-      </div>
-    </div>
-  </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">مشتریان</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                <button href="javascript:void()" data-toggle="modal" data-target="#addClientModal" class="btn btn-primary btn-event w-100">افزودن مشتری جدید</button>
+                </div>
+            </div>
+        </div>
 
   <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
 
-  <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-responsive-md">
-                                    <thead>
-                                    <tr>
-          <th scope="col">نام مشتری</th>
-          <th scope="col">آدرس ایمیل</th>
-          <th scope="col">شماره تماس</th>
-          <th scope="col">آدرس</th>
-          <th scope="col">استان</th>
-        </tr>
-      </thead>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th scope="col">نام مشتری</th>
+                            <th scope="col">آدرس ایمیل</th>
+                            <th scope="col">شماره تماس</th>
+                            <th scope="col">آدرس</th>
+                            <th scope="col">استان</th>
+                        </tr>
+                    </thead>
       <tbody>
 
         {% for client in clients %}
@@ -66,8 +67,7 @@
 
     </div>
   </div>
-
-
+        </div>
 
 <!-- MODALS MODALS -->
   <!-- Modals Start Here -->
@@ -84,21 +84,23 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-body py-0">
+      <div class="card-body">
+                            <div class="basic-form">
 
 
         {{form.as_p}}
 
 
       </div>
+      </div>
       <div class="modal-footer flex-column border-top-0">
         <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">ذخیره</button>
-      </div>
+              </div>
 
-      </form>
-    </div>
-  </div>
-</div>
+        </form>
+                    </div>
+                </div>
+          </div>
 </div>
 
 {% endblock %}
