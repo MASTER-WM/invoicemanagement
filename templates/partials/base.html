@@ -93,11 +93,13 @@
                     </div>
                     <ul class="navbar-nav header-right">
                         <li class="nav-item">
+                            <form><
                             <div class="input-group search-area d-xl-inline-flex d-none">
-                                <input type="text" class="form-control" placeholder="یه چیزی جستجو کنید">
+                                <input type="text" class="form-control" name="title_filter" placeholder="یه چیزی جستجو کنید">
                                 <div class="input-group-append">
                                     <button class="input-group-text"><i class="flaticon-381-search-2"></i></button>
                                 </div>
+                            </form>
                             </div>
                         </li>
                         <li class="nav-item dropdown notification_dropdown">
@@ -213,82 +215,6 @@
 <script src="{% static 'assets/js/demo.js' %}"></script>
 <script src="{% static 'assets/js/styleswitcher.js' %}"></script>
 
-<script>
-
-    function carouselReview(){
-        /*  testimonial one function by = owl.carousel.js */
-        function checkDirection() {
-            var htmlClassName = document.getElementsByTagName('html')[0].getAttribute('class');
-            if(htmlClassName == 'rtl') {
-                return true;
-            } else {
-                return false;
-
-            }
-        }
-        jQuery('.testimonial-one').owlCarousel({
-            loop:true,
-            autoplay:true,
-            margin:15,
-            nav:false,
-            dots: false,
-            left:true,
-            rtl: checkDirection(),
-            navText: ['', ''],
-            responsive:{
-                0:{
-                    items:1
-                },
-                800:{
-                    items:2
-                },
-                991:{
-                    items:2
-                },
-
-                1200:{
-                    items:2
-                },
-                1600:{
-                    items:2
-                }
-            }
-        })
-        jQuery('.testimonial-two').owlCarousel({
-            loop:true,
-            autoplay:true,
-            margin:15,
-            nav:false,
-            dots: true,
-            left:true,
-            rtl: checkDirection(),
-            navText: ['', ''],
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:2
-                },
-                991:{
-                    items:3
-                },
-
-                1200:{
-                    items:3
-                },
-                1600:{
-                    items:4
-                }
-            }
-        })
-    }
-    jQuery(window).on('load',function(){
-        setTimeout(function(){
-            carouselReview();
-        }, 1000);
-    });
-</script>>
 
 {% block scripts %}
 {% endblock %}

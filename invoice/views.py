@@ -64,7 +64,7 @@ def login(request):
             return redirect('dashboard')
         else:
             context['form'] = form
-            messages.error(request, 'Invalid Credentials')
+            messages.error(request, 'نام کاربری یا رمز عبور اشتباه است')
             return redirect('login')
 
 
@@ -73,16 +73,16 @@ def login(request):
 
 @login_required
 def dashboard(request):
-    # clients = Client.objects.all().count()
-    # invoices = Invoice.objects.all().count()
-    # # paidInvoices = Invoice.objects.filter(status='PAID').count()
-    #
-    #
-    # context = {}
-    # context['clients'] = clients
-    # context['invoices'] = invoices
-    # context['paidInvoices'] = paidInvoices
-    return render(request, 'invoice/dashboard.html')
+    clients = Client.objects.all()
+    clientsCount = clients.count()
+    invoices = Invoice.objects.all()
+    invoices = invoices.count()
+
+    context = {}
+    context['clients'] = clients
+    context['clientsC'] = clientsCount
+    context['invoices'] = invoices
+    return render(request, 'invoice/dashboard.html',context)
 
 @login_required
 def research(request):

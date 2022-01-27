@@ -28,13 +28,13 @@ function getUrlParams(dParam)
 		typography: localStorage.getItem('typography') || "iransans-normal",
 		version: localStorage.getItem('version') || "light",
 		layout: localStorage.getItem('layout') || "vertical",
-		headerBg: localStorage.getItem('headerBg') || "color_1",
-		navheaderBg: localStorage.getItem('navheaderBg') || "color_3",
-		sidebarBg: localStorage.getItem('sidebarBg') || "color_3",
+		headerBg: localStorage.getItem('headerBg') || "color_12",
+		navheaderBg: localStorage.getItem('navheaderBg') || "color_1",
+		sidebarBg: localStorage.getItem('sidebarBg') || "color_1",
 		sidebarStyle: localStorage.getItem('sidebarStyle') || "full",
 		sidebarPosition: localStorage.getItem('sidebarPosition') || "fixed",
 		headerPosition: localStorage.getItem('headerPosition') || "fixed",
-		primary: localStorage.getItem('primary') || "",
+		primary: localStorage.getItem('primary') || "color_8",
 		containerLayout: localStorage.getItem('containerLayout') || "full",
 		direction: direction
 		};

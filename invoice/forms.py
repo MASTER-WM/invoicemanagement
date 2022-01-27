@@ -100,53 +100,31 @@ class ProductForm(forms.ModelForm):
 class InvoiceForm(forms.ModelForm):
 
     title = forms.CharField(
-                    required = True,
                     label='شماره سفارش',
-                    widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'شماره سفارش'}),)
+                    widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'شماره سفارش'}),required=True)
 
-    create_Date = forms.CharField(
-        required=True,
-        label='تاریخ ثبت سفارش ',
-        widget=forms.TextInput(attrs={'class': 'form-control mb-3 '}))
+    # create_Date = forms.CharField(
+    #     required=True,
+    #     label='تاریخ ثبت سفارش ',
+    #     widget=forms.TextInput(attrs={'class': 'form-control mb-3 '}))
 
     request_code = forms.CharField(
-                    required = True,
                     label='شماره / کد درخواست کالا',
-                    widget=forms.TextInput(attrs={'class': 'form-control mb-3 '}))
+                    widget=forms.TextInput(attrs={'class': 'form-control mb-3 '}),required=True)
 
-    dueDate = forms.CharField(
-                        required = True,
-                        label='تاریخ تحویل سفارش ',
-        widget=forms.TextInput(attrs={'class': 'form-control mb-3 '}))
+    # dueDate = forms.CharField(
+    #                     required = True,
+    #                     label='تاریخ تحویل سفارش ',
+    #     widget=forms.TextInput(attrs={'class': 'form-control mb-3 '}))
 
-    #     self.fields['dueDate'] = JalaliDateField(label=_('تاریخ تحویل سفارش'),
-    #                                                         widget=AdminSplitJalaliDateTime
-    #                                                         # required, for decompress DatetimeField to JalaliDateField and JalaliTimeField
-    #                                                         )
-
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.helper = FormHelper()
-    #     self.helper.layout = Layout(
-    #         Row(
-    #             Column('title', css_class='form-group col-md-6'),
-    #             Column('create_Date', css_class='form-group col-md-6'),
-    #             css_class='form-row'),
-    #         Row(
-    #             Column('request_code', css_class='form-group col-md-6'),
-    #             Column('dueDate', css_class='form-group col-md-6'),
-    #             css_class='form-row'),
-    #
-    #
-    #         Submit('submit', 'ثبت یا ویرایش '))
-    #
-    #     super(InvoiceForm, self).__init__(*args, **kwargs)
-    #     self.fields['create_Date'] = JalaliDateField(label= ('تاریخ ثبت سفارش'),
-    #                                                  widget=AdminJalaliDateWidget
-    #                                                  )
-    #     self.fields['dueDate'] = JalaliDateField(label=('تاریخ تحویل سفارش'),
-    #                                                  widget=AdminJalaliDateWidget
-    #                                                  )
+    def __init__(self, *args, **kwargs):
+        super(InvoiceForm, self).__init__(*args, **kwargs)
+        self.fields['create_Date'] = JalaliDateField(label= ('تاریخ ثبت سفارش'),
+                                                     widget=AdminJalaliDateWidget
+                                                     )
+        self.fields['dueDate'] = JalaliDateField(label=('تاریخ تحویل سفارش'),
+                                                     widget=AdminJalaliDateWidget
+                                                     )
 
     class Meta:
         model = Invoice

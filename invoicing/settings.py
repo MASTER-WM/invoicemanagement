@@ -13,7 +13,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from django.contrib.messages import constants as messages
 import os
+from datetime import timedelta
 
+AUTO_LOGOUT = {
+    'IDLE_TIME': timedelta(minutes=5),
+    'SESSION_TIME': timedelta(minutes=60),
+    'MESSAGE': 'لطفا دوباره وارد شوید.',
+}
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
@@ -93,6 +99,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_auto_logout.middleware.auto_logout',
 ]
 
 ROOT_URLCONF = 'invoicing.urls'
@@ -194,3 +201,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'parsianhydrolic@gmail.com'
 EMAIL_HOST_PASSWORD = '!Q2w3e4r'
 DEFAULT_FROM_EMAIL = ''
+

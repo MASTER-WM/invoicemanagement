@@ -104,14 +104,17 @@
                                         <div class="form-group col-md-6">
                                             <input type="search" class="form-control input-rounded" name="title" placeholder="شماره سفارش">
                                         </div>
+
                                         <div class="form-group col-md-6">
-                                            <input type="search" class="form-control input-rounded" name="create_Date" placeholder="تاریخ ثبت">
+                            <input data-jdp data-jdp-min-date="today" name="create_Date" class="form-control input-rounded" id="datepicker-default" placeholder="تاریخ ثبت">
                                         </div>
+
                                         <div class="form-group col-md-6">
                                             <input type="search" class="form-control input-rounded" name="request_code" placeholder="شماره / کد درخواست">
                                         </div>
+
                                         <div class="form-group col-md-6">
-                                            <input type="search" class="form-control input-rounded" name="dueDate" placeholder="تاریخ تحویل">
+                                            <input data-jdp data-jdp-min-date="today" class="form-control input-rounded" name="dueDate" placeholder="تاریخ تحویل" id="datepicker-default">
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">ثبت</button>
@@ -138,16 +141,14 @@
 
                    <div class="row">
                   <div class="col-lg-4">
-                    <a href="#"><button class="btn btn-info text-white"> نمایش سفارش </button></a>
+                    <a href="{% url 'view-pdf-invoice' invoice.slug %}"><button class="btn btn-info text-white"> نمایش سفارش </button></a>
                   </div>
                   <div class="col-lg-4">
-                    <a href="#"><button class="btn btn-success text-white"> نمایش نسخه PDF </button></a>
+                    <a href="{% url 'view-document-invoice' invoice.slug %}"><button class="btn btn-success text-white"> نمایش نسخه PDF </button></a>
                   </div>
 
                   <div class="col-lg-4">
-                    <div class="card bg-primary"
-                    <a href="#"><button class="btn btn-warning text-white"> ارسال EMAIL  </button></a>
-                  </div>
+                    <a href="{% url 'email-document-invoice' invoice.slug %}"><button class="btn btn-warning text-white"> ارسال EMAIL  </button></a>
                 </div>
 
 
@@ -240,7 +241,7 @@
 
 <script>
     jalaliDatepicker.startWatch({
-        separatorChar: "/",
+        separatorChar: "-",
         changeMonthRotateYear: true,
         showTodayBtn: true,
         showEmptyBtn: true

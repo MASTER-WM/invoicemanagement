@@ -5,7 +5,7 @@
  var dzChartlist = function(){
 	let draw = Chart.controllers.line.__super__.draw; //draw shadow
 	var screenWidth = $(window).width();
-	
+
 	var donutChart = function(){
 		$("span.donut").peity("donut", {
 			width: "75",
@@ -51,15 +51,15 @@
 					datasets: [
 						{
 							label: "اولین مجموعه داده من",
-							data: [78, 80, 20, 40, 75, 75, 25, 40, 10, 30],
+							data: [{% for client in clients %}  '{{client.clientName}}',  {% endfor %}],
 							borderColor: 'rgba(78, 54, 226, 1)',
 							borderWidth: "5",
 							pointHoverRadius:10,
-							backgroundColor: 'transparent', 
+							backgroundColor: 'transparent',
 							pointBackgroundColor: 'rgba(78, 54, 226, 1)',
 						}, {
 							label: "دومین مجموعه داده من",
-							data: [30, 50, 30, 40, 30, 40, 20, 10, 10, 10],
+							data: [{% for client in clients %}  '{{client.clientName}}',  {% endfor %}],
 							borderColor: lineChart_3gradientStroke2,
 							borderWidth: "5",
 							backgroundColor: 'transparent',
@@ -84,15 +84,15 @@
 					scales: {
 						yAxes: [{
 							ticks: {
-								beginAtZero: true, 
-								max: 100, 
-								min: 0, 
-								stepSize: 20, 
+								beginAtZero: true,
+								max: 100,
+								min: 0,
+								stepSize: 20,
 								padding: 10,
 								fontFamily: 'iransans-normal'
 							}
 						}],
-						xAxes: [{ 
+						xAxes: [{
 							ticks: {
 								padding: 5,
 								fontFamily: 'iransans-normal'
@@ -113,33 +113,33 @@
 		return {
 			init:function(){
 			},
-			
-			
+
+
 			load:function(){
 				donutChart();
 				lineChart();
 			},
-			
+
 			resize:function(){
-				
+
 			}
 		}
-	
+
 	}();
 
 	jQuery(document).ready(function(){
 	});
-		
+
 	jQuery(window).on('load',function(){
 		setTimeout(function(){
 			dzChartlist.load();
-		}, 1000); 
-		
+		}, 1000);
+
 	});
 
 	jQuery(window).on('resize',function(){
-		
-		
-	});     
+
+
+	});
 
 })(jQuery);

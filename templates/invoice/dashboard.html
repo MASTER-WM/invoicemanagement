@@ -1,13 +1,10 @@
 {% extends 'partials/base.html' %}
 
 {% load static %}
-{% load crispy_forms_tags %}
 
 {% block css %}
 
-  <link href="{% static 'assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'assets/vendor/fullcalendar/css/fullcalendar.min.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" type="text/css"/>
 
 {% endblock %}
 
@@ -15,12 +12,79 @@
 {% block main %}
 
 
-
-<--**********************************
-    Content body start
-***********************************-->
     <div class="content-body">
         <!-- row -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-xxl-6 col-sm-6">
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+
+                                <div class="media-body text-left">
+                                    <p class="fs-18 text-white mb-2">سفارشات</p>
+                                    <span class="fs-48 text-white font-w600">{{invoices}}</span>
+                                </div>
+                                <span class="p-3 ml-3 feature-icon rounded">
+										<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M30.25 5.75H28.5V2.25C28.5 1.78587 28.3156 1.34075 27.9874 1.01256C27.6593 0.684374 27.2141 0.5 26.75 0.5C26.2859 0.5 25.8407 0.684374 25.5126 1.01256C25.1844 1.34075 25 1.78587 25 2.25V5.75H11V2.25C11 1.78587 10.8156 1.34075 10.4874 1.01256C10.1592 0.684374 9.71413 0.5 9.25 0.5C8.78587 0.5 8.34075 0.684374 8.01256 1.01256C7.68437 1.34075 7.5 1.78587 7.5 2.25V5.75H5.75C4.35761 5.75 3.02226 6.30312 2.03769 7.28769C1.05312 8.27226 0.5 9.60761 0.5 11V12.75H35.5V11C35.5 9.60761 34.9469 8.27226 33.9623 7.28769C32.9777 6.30312 31.6424 5.75 30.25 5.75Z" fill="white"/>
+											<path d="M0.5 30.25C0.5 31.6424 1.05312 32.9777 2.03769 33.9623C3.02226 34.9469 4.35761 35.5 5.75 35.5H30.25C31.6424 35.5 32.9777 34.9469 33.9623 33.9623C34.9469 32.9777 35.5 31.6424 35.5 30.25V16.25H0.5V30.25Z" fill="white"/>
+										</svg>
+									</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-xxl-6 col-sm-6">
+                    <div class="card bg-info">
+                        <div class="card-body">
+                            <div class="media align-items-center">
+                                <div class="media-body text-left">
+                                    <p class="fs-18 text-white mb-2">مشتریان</p>
+                                    <span class="fs-48 text-white font-w600">{{clientsC}}</span>
+                                </div>
+									<span class="p-3 ml-3 feature-icon rounded">
+										<svg width="36" height="36" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M15.1811 22.0083C15.065 21.9063 14.7968 21.6695 14.7015 21.5799C12.3755 19.3941 10.8517 15.9712 10.8517 12.1138C10.8517 5.37813 15.4868 0.0410156 21.001 0.0410156C26.5152 0.0410156 31.1503 5.37813 31.1503 12.1138C31.1503 15.9679 29.6292 19.3884 27.3094 21.5778C27.2118 21.6699 26.9384 21.9116 26.8238 22.0125L26.8139 22.1799C26.8789 23.1847 27.554 24.0553 28.5232 24.3626C35.7277 26.641 40.9507 32.0853 41.8276 38.538C41.9483 39.3988 41.6902 40.2696 41.1198 40.9254C40.5495 41.5813 39.723 41.9579 38.8541 41.9579C32.4956 41.9591 9.50672 41.9591 3.14818 41.9591C2.2787 41.9591 1.4518 41.5824 0.881242 40.9263C0.31068 40.2701 0.0523763 39.3989 0.172318 38.5437C1.05145 32.0851 6.27444 26.641 13.4777 24.3628C14.4504 24.0544 15.1263 23.1802 15.1885 22.1722L15.1811 22.0083Z" fill="white"/>
+										</svg>
+									</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!--<div class="col-xl-9 col-xxl-8">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-xl-12">-->
+<!--                            <div class="card">-->
+<!--                                <div class="card-header border-0 pb-0 flex-wrap">-->
+<!--                                    <h4 class="fs-20 text-black mr-4 mb-2">آمار ثبت نام کاربران</h4>-->
+
+<!--                                </div>-->
+<!--                                <div class="card-body">-->
+<!--                                    <canvas id="lineChart" class="Vacancy-chart"></canvas>-->
+<!--                                    <div class="d-flex flex-wrap align-items-center justify-content-center mt-3">-->
+<!--                                        <div class="fs-14 text-black mr-4">-->
+<!--                                            <svg class="mr-2" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                <rect width="19" height="19" rx="9.5" fill="#4E36E2"/>-->
+<!--                                            </svg>-->
+<!--                                        </div>-->
+<!--                                        <div class="fs-14 text-black mr-4">-->
+<!--                                            <svg class="mr-2" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                <rect width="19" height="19" rx="9.5" fill="#1BD084"/>-->
+<!--                                            </svg>-->
+<!--                                        </div>-->
+<!--                                        <div class="fs-14 text-black">-->
+<!--                                            <svg class="mr-2" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                <rect width="19" height="19" rx="9.5" fill="#FF424D"/>-->
+<!--                                            </svg>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
         <!-- row -->
         <div class="container-fluid">
             <div class="page-titles">
@@ -33,6 +97,33 @@
 
 
             <div class="row">
+                <div class="col-xl-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-intro-title">تقویم </h4>
+
+                            <div class="">
+                                <div id="external-events" class="my-3">
+                                    <p>تاریخ مورد نظر را انتخاب کنید</p>
+                                    <div class="external-event" data-class="bg-primary"><i class="fa fa-move"></i>یک قالب جدید </div>
+                                    <div class="external-event" data-class="bg-success"><i class="fa fa-move"></i>کار های من
+                                    </div>
+                                    <div class="external-event" data-class="bg-warning"><i class="fa fa-move"></i>مدیریت کارها</div>
+                                    <div class="external-event" data-class="bg-dark"><i class="fa fa-move"></i>افزودن قالب جدید</div>
+                                </div>
+                                <!-- checkbox -->
+                                <div class="checkbox custom-control checkbox-event custom-checkbox pt-3 pb-5">
+                                    <input type="checkbox" class="custom-control-input" id="drop-remove">
+                                    <label class="custom-control-label" for="drop-remove">پاک کردن</label>
+                                </div>
+                                <a href="javascript:void()" data-toggle="modal" data-target="#add-category" class="btn btn-primary btn-event w-100">
+                                    <span class="align-middle"><i class="ti-plus"></i></span> ایجاد
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9">
                     <div class="card">
                         <div class="card-body">
 <!--                            <div id='top'>-->
@@ -104,7 +195,6 @@
         Content body end
     ***********************************-->
 
-
 {% endblock %}
 
 {% block scripts %}
@@ -114,6 +204,7 @@
 <script src="{% static 'assets/vendor/fullcalendar/js/moment-jalaali.js' %}" type="text/javascript"></script>
 <script src="{% static 'assets/vendor/fullcalendar/js/fullcalendar.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'assets/vendor/fullcalendar/js/locale-all.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/js/dashboard/dashboard-1.js' %}" type="text/javascript"></script>
 
 <script>
 
@@ -152,5 +243,82 @@
         // });
     });
 
+</script>
+                    <script>
+
+
+    function carouselReview(){
+        /*  testimonial one function by = owl.carousel.js */
+        function checkDirection() {
+            var htmlClassName = document.getElementsByTagName('html')[0].getAttribute('class');
+            if(htmlClassName == 'rtl') {
+                return true;
+            } else {
+                return false;
+
+            }
+        }
+        jQuery('.testimonial-one').owlCarousel({
+            loop:true,
+            autoplay:true,
+            margin:15,
+            nav:false,
+            dots: false,
+            left:true,
+            rtl: checkDirection(),
+            navText: ['', ''],
+            responsive:{
+                0:{
+                    items:1
+                },
+                800:{
+                    items:2
+                },
+                991:{
+                    items:2
+                },
+
+                1200:{
+                    items:2
+                },
+                1600:{
+                    items:2
+                }
+            }
+        })
+        jQuery('.testimonial-two').owlCarousel({
+            loop:true,
+            autoplay:true,
+            margin:15,
+            nav:false,
+            dots: true,
+            left:true,
+            rtl: checkDirection(),
+            navText: ['', ''],
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:2
+                },
+                991:{
+                    items:3
+                },
+
+                1200:{
+                    items:3
+                },
+                1600:{
+                    items:4
+                }
+            }
+        })
+    }
+    jQuery(window).on('load',function(){
+        setTimeout(function(){
+            carouselReview();
+        }, 1000);
+    });
 </script>
 {% endblock %}
