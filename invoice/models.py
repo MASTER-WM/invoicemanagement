@@ -57,8 +57,8 @@ class Invoice(models.Model):
     title = models.CharField(null=True, blank=True, max_length=100)
     number = models.CharField(null=True, blank=True, max_length=100)
     form_Number = models.CharField(null=True, blank=True, default='AF-07-03', max_length=100)
-    dueDate = models.DateField(null=True, blank=True)
-    create_Date = models.DateField(null=True, blank=True)
+    dueDate = models.CharField(null=True, blank=True, max_length=100)
+    create_Date = models.CharField(null=True, blank=True, max_length=100)
 
     #RELATED fields
     client = models.ForeignKey(Client, blank=True, null=True, on_delete=models.SET_NULL)

@@ -12,15 +12,22 @@
 
 {% block main %}
 
-<div class="content-body">
-                <div class="col-lg-12">
-                        <div class="card-header">
-                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <div class="btn-group me-2">
-        <a href="{% url 'create-invoice' %}"><button type="button" class="btn btn-primary">افزودن سفارش جدید</button></a>
-      </div>
+<div class="content-body" xmlns="http://www.w3.org/1999/html">
+    <div class="col-lg-12">
+        <div class="card-header">
+            <div class="form-group col-md-6 flex-start">
+
+                <div class="btn-group me-4">
+
+                <a href="{% url 'create-invoice' %}"><button type="button" class="btn btn-primary">افزودن سفارش جدید</button></a>
+                    <form>
+                        <input type="search" class="form-control input-rounded" name="title_filter" placeholder="شماره سفارش">
+                </div>
+                    </form>
+
+            </div>
+        </div>
     </div>
-  </div>
                     <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-responsive-md">
@@ -46,7 +53,7 @@
                                                     width="24" alt=""/> <span class="w-space-no">{{invoice.client.clientName}}</span>
                                             </div>
                                         </td>
-                                        <td>{{invoice.get_jalali_createdate}}</td>
+                                        <td>{{invoice.create_Date}}</td>
                                         <td>{{invoice.request_code}}</td>
                                         <td>
                                             <div class="d-flex">
@@ -66,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+
 
 {% endblock %}
 

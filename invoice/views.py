@@ -104,6 +104,8 @@ def research(request):
 def invoices(request):
     context = {}
     invoices = Invoice.objects.all()
+    filter = InvoiceFilter(request.GET, queryset=invoices)
+    invoices = filter.qs
 
     context['invoices'] = invoices
     context['filter'] = filter

@@ -41,6 +41,7 @@
                 <table class="table table-responsive-md">
                     <thead>
                         <tr>
+                            <td scope="col"> کد مشتری </td>
                             <th scope="col">نام مشتری</th>
                             <th scope="col">آدرس ایمیل</th>
                             <th scope="col">شماره تماس</th>
@@ -52,6 +53,7 @@
 
         {% for client in clients %}
       <tr>
+          <td>{{client.clientCode}}</td>
         <td>{{client.clientName}}</td>
         <td>{{client.emailAddress}}</td>
         <td>{{client.phoneNumber}}</td>
