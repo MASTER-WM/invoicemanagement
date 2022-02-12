@@ -87,11 +87,12 @@ def dashboard(request):
 @login_required
 def research(request):
     context = {}
+    clients = Client.objects.all()
     invoices = Invoice.objects.all()
     filter = InvoiceFilter(request.GET, queryset=invoices)
     invoices = filter.qs
 
-
+    context['clients'] = clients
     context['invoices'] = invoices
     context['filter'] = filter
 
