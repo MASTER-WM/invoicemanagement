@@ -20,7 +20,7 @@ class Client(models.Model):
     emailAddress = models.CharField(null=True, blank=True, max_length=100)
     taxNumber = models.CharField(null=True, blank=True, max_length=100)
     clientCode = models.CharField(null=True, blank=True, max_length=100)
-
+    clientWork = models.CharField(null=True, blank=True, max_length=150)
 
     #Utility fields
     uniqueId = models.CharField(null=True, blank=True, max_length=100)
@@ -48,6 +48,7 @@ class Client(models.Model):
         self.last_updated = timezone.localtime(timezone.now())
 
         super(Client, self).save(*args, **kwargs)
+
 
 
 
@@ -102,7 +103,7 @@ class Product(models.Model):
 
     title = models.CharField(null=True, blank=True, max_length=100)
     description = models.TextField(null=True, blank=True)
-    quantity = models.FloatField(null=True, blank=True)
+    quantity = models.CharField(null=True, blank=True, max_length=20)
     unit = models.CharField(null=True, blank=True, max_length=20)
 
     #Related Fields

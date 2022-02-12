@@ -16,8 +16,8 @@ import os
 from datetime import timedelta
 
 AUTO_LOGOUT = {
-    'IDLE_TIME': timedelta(minutes=5),
-    'SESSION_TIME': timedelta(minutes=60),
+    'IDLE_TIME': timedelta(minutes=60),
+    'SESSION_TIME': timedelta(minutes=1500),
     'MESSAGE': 'لطفا دوباره وارد شوید.',
 }
 
@@ -45,7 +45,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'enter-your-app-secret-key-here-a-super-long-super-hard-to-guess-secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -198,7 +198,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'parsianhydrolic@gmail.com'
-EMAIL_HOST_PASSWORD = '!Q2w3e4r'
+EMAIL_HOST_USER = 'pasargadhydrolic@gmail.com'
+EMAIL_HOST_PASSWORD = '1Q@w3e4r'
 DEFAULT_FROM_EMAIL = ''
 

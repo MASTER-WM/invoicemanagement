@@ -1,20 +1,19 @@
-{% extends 'partials/base.html' %}
+{% extends 'partials/base.html' %}"
 
-{% load static %}
+{% load static %}"
 
-{% block css %}
+{% block css %}"
+    <link rel="stylesheet" href="{% static 'assets/css/calendar.css' %}">
 
-    <link href="{% static 'assets/vendor/fullcalendar/css/fullcalendar.min.css' %}" rel="stylesheet" type="text/css"/>
-
-{% endblock %}
-
-
-{% block main %}
+{% endblock %}"
 
 
-    <div class="content-body">
+{% block main %}"
+
+
+<div class="content-body">
+      <div class="container-fluid">
         <!-- row -->
-        <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-3 col-xxl-6 col-sm-6">
                     <div class="card bg-primary">
@@ -53,38 +52,8 @@
                         </div>
                     </div>
                 </div>
-
-<!--<div class="col-xl-9 col-xxl-8">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-xl-12">-->
-<!--                            <div class="card">-->
-<!--                                <div class="card-header border-0 pb-0 flex-wrap">-->
-<!--                                    <h4 class="fs-20 text-black mr-4 mb-2">آمار ثبت نام کاربران</h4>-->
-
-<!--                                </div>-->
-<!--                                <div class="card-body">-->
-<!--                                    <canvas id="lineChart" class="Vacancy-chart"></canvas>-->
-<!--                                    <div class="d-flex flex-wrap align-items-center justify-content-center mt-3">-->
-<!--                                        <div class="fs-14 text-black mr-4">-->
-<!--                                            <svg class="mr-2" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                                <rect width="19" height="19" rx="9.5" fill="#4E36E2"/>-->
-<!--                                            </svg>-->
-<!--                                        </div>-->
-<!--                                        <div class="fs-14 text-black mr-4">-->
-<!--                                            <svg class="mr-2" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                                <rect width="19" height="19" rx="9.5" fill="#1BD084"/>-->
-<!--                                            </svg>-->
-<!--                                        </div>-->
-<!--                                        <div class="fs-14 text-black">-->
-<!--                                            <svg class="mr-2" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                                <rect width="19" height="19" rx="9.5" fill="#FF424D"/>-->
-<!--                                            </svg>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
+            </div>
+        </div>
         <!-- row -->
         <div class="container-fluid">
             <div class="page-titles">
@@ -95,109 +64,140 @@
             </div>
             <!-- row -->
 
+              <div class="container-fluid">
 
-            <div class="row">
-                <div class="col-xl-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-intro-title">تقویم </h4>
+                <div class="col-xl-11">
+         
+                          <div class="container-fluid">
+                           
 
-                            <div class="">
-                                <div id="external-events" class="my-3">
-                                    <p>تاریخ مورد نظر را انتخاب کنید</p>
-                                    <div class="external-event" data-class="bg-primary"><i class="fa fa-move"></i>یک قالب جدید </div>
-                                    <div class="external-event" data-class="bg-success"><i class="fa fa-move"></i>کار های من
-                                    </div>
-                                    <div class="external-event" data-class="bg-warning"><i class="fa fa-move"></i>مدیریت کارها</div>
-                                    <div class="external-event" data-class="bg-dark"><i class="fa fa-move"></i>افزودن قالب جدید</div>
+
+                                <table id="cal1" class="fc-table">
+
+                                     <caption>
+                                        <label for="fc-year">سال:</label>
+                                        <select name="fc-year" class="fc-year">
+                                            <option value="1391">1391</option>
+                                            <option value="1392">1392</option>
+                                            <option value="1393">1393</option>
+                                            <option value="1394">1394</option>
+                                            <option value="1395">1395</option>
+                                            <option value="1396">1396</option>
+                                            <option value="1397">1397</option>
+                                            <option value="1398">1398</option>
+                                            <option value="1399">1399</option>
+                                            <option value="1400">1400</option>
+                                            <option value="1401">1401</option>
+                                        </select>
+
+                                        <label for="fc-month">ماه:</label>
+                                         <select name="fc-month" class="fc-month">
+                                            <option value="0">فروردین</option>
+                                            <option value="1">اردیبهشت</option>
+                                            <option value="2">خرداد</option>
+                                            <option value="3">تیر</option>
+                                            <option value="4">مرداد</option>
+                                            <option value="5">شهریور</option>
+                                            <option value="6">مهر</option>
+                                            <option value="7">آبان</option>
+                                            <option value="8">آذر</option>
+                                            <option value="9">دی</option>
+                                            <option value="10">بهمن</option>
+                                            <option value="11">اسفند</option>
+                                        </select>
+                                    </caption>
+                                        <tr>
+                                        <th>شنبه</th>
+                                        <th>یکشنبه</th>
+                                        <th>دوشنبه</th>
+                                        <th>سه شنبه</th>
+                                        <th>چهارشنبه</th>
+                                        <th>پنچشنبه</th>
+                                        <th>جمعه</th>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                   </table>
                                 </div>
-                                <!-- checkbox -->
-                                <div class="checkbox custom-control checkbox-event custom-checkbox pt-3 pb-5">
-                                    <input type="checkbox" class="custom-control-input" id="drop-remove">
-                                    <label class="custom-control-label" for="drop-remove">پاک کردن</label>
-                                </div>
-                                <a href="javascript:void()" data-toggle="modal" data-target="#add-category" class="btn btn-primary btn-event w-100">
-                                    <span class="align-middle"><i class="ti-plus"></i></span> ایجاد
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                       
+                       </div> </div>
+                  
                 </div>
-                <div class="col-xl-9">
-                    <div class="card">
-                        <div class="card-body">
-<!--                            <div id='top'>-->
-<!--                                Locales:-->
-<!--                                <select id='locale-selector'></select>-->
-<!--                            </div>-->
-                            <div id='calendar'></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- BEGIN MODAL -->
-                <div class="modal fade none-border" id="event-modal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"><strong>اضافه کردن کار جدید من</strong></h4>
-                            </div>
-                            <div class="modal-body"></div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
-                                <button type="button" class="btn btn-success save-event waves-effect waves-light">ایجاد کار</button>
-
-                                <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">حذف</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Add Category -->
-                <div class="modal fade none-border" id="add-category">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"><strong>افزودن دسته بندی</strong></h4>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label class="control-label">نام دسته بندی</label>
-                                            <input class="form-control form-white" placeholder="نام را وارد کنید" type="text" name="category-name">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="control-label">انتخاب رنگ دسته بندی</label>
-                                            <select class="form-control form-white" data-placeholder="رنگ را انتخاب کنید ..." name="category-color">
-                                                <option value="success">سبز</option>
-                                                <option value="danger">قرمز</option>
-                                                <option value="info">آبی روشن</option>
-                                                <option value="pink">صورتی</option>
-                                                <option value="primary">آبی</option>
-                                                <option value="warning">زرد</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
-                                <button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">ذخیره</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+            
+          </div>
 
     </div>
+</div>
+
+
     <!--**********************************
         Content body end
     ***********************************-->
 
-{% endblock %}
+{% endblock %}"
 
-{% block scripts %}
+{% block scripts %}"
+<!--**********************************
+    Scripts
+***********************************-->
+<script src="{% static 'assets/js/jalali.js' %}"></script>
+<script src="{% static 'assets/js/hijri.js' %}"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 <script src="{% static 'assets/vendor/bootstrap-datetimepicker/js/moment.js' %}" type="text/javascript"></script>
 <script src="{% static 'assets/vendor/jqueryui/js/jquery-ui.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'assets/vendor/moment/moment.min.js' %}" type="text/javascript"></script>
@@ -207,118 +207,286 @@
 <script src="{% static 'assets/js/dashboard/dashboard-1.js' %}" type="text/javascript"></script>
 
 <script>
-
-    $(document).ready(function() {
-        var initialLocaleCode = 'fa';
-
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'next,prev today',
-               // center: 'title',
-              //  right: 'month,agendaWeek,agendaDay'
-            },
-            isJalaali : true,
-            defaultDate: moment(),
-            locale: initialLocaleCode,
-            buttonIcons: false, // show the prev/next text
-            // weekNumbers: true,
-            navLinks: true, // can click day/week names to navigate views
-        });
-        // build the locale selector's options
-        // $.each($.fullCalendar.locales, function(localeCode) {
-        //     $('#locale-selector').append(
-        //         $('<option/>')
-        //             .attr('value', localeCode)
-        //             .prop('selected', localeCode == initialLocaleCode)
-        //             .text(localeCode)
-        //     );
-        // });
-
-        // when the selected option changes, dynamically change the calendar option
-        // $('#locale-selector').on('change', function() {
-        //     if (this.value) {
-        //         $('#calendar').fullCalendar('option', 'locale', this.value);
-        //         $('#calendar').fullCalendar('option', 'isJalaali', (this.value == 'fa' ? true : false));
-        //     }
-        // });
+    $(document).ready(function () {
+        InitCalendar($("#cal1"));
     });
 
-</script>
-                    <script>
+    var _year;
+    var _month;
+    var _day = 1;
+    var _currDay;
+    var _jlcal = new JalaliCal();
+    var _hjcal = new HijriCal();
 
+    /* sets table and calendar defaults */
+    function InitCalendar(table) {
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1;
+        var day = today.getDate();
+        var dayofweek;
 
-    function carouselReview(){
-        /*  testimonial one function by = owl.carousel.js */
-        function checkDirection() {
-            var htmlClassName = document.getElementsByTagName('html')[0].getAttribute('class');
-            if(htmlClassName == 'rtl') {
-                return true;
-            } else {
-                return false;
-
-            }
-        }
-        jQuery('.testimonial-one').owlCarousel({
-            loop:true,
-            autoplay:true,
-            margin:15,
-            nav:false,
-            dots: false,
-            left:true,
-            rtl: checkDirection(),
-            navText: ['', ''],
-            responsive:{
-                0:{
-                    items:1
-                },
-                800:{
-                    items:2
-                },
-                991:{
-                    items:2
-                },
-
-                1200:{
-                    items:2
-                },
-                1600:{
-                    items:2
-                }
-            }
-        })
-        jQuery('.testimonial-two').owlCarousel({
-            loop:true,
-            autoplay:true,
-            margin:15,
-            nav:false,
-            dots: true,
-            left:true,
-            rtl: checkDirection(),
-            navText: ['', ''],
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:2
-                },
-                991:{
-                    items:3
-                },
-
-                1200:{
-                    items:3
-                },
-                1600:{
-                    items:4
-                }
-            }
-        })
+        var jalaliDate = _jlcal.toJalaali(year, month, day);
+        _year = jalaliDate.jy;
+        _month = jalaliDate.jm - 1;
+        $(".fc-year").val(_year);
+        $(".fc-month").val(_month);
+        UpdateCal(table, _year, _month, _day);
     }
-    jQuery(window).on('load',function(){
-        setTimeout(function(){
-            carouselReview();
-        }, 1000);
+
+    /* updates table values */
+    function UpdateCal(table, year, month, day) {
+        var today, dayOfWeek, daysInMonth, count = 1;
+        var tb = $(table), td;
+        var j2g, g2h;
+        var now = new Date();
+
+        j2g = _jlcal.toGregorian(year, month + 1, 1);
+        today = new Date(j2g.gy, j2g.gm - 1, j2g.gd);
+        dayOfWeek = today.getDay();
+        dayOfWeek = (dayOfWeek == 6) ? 0 : dayOfWeek + 1;
+        daysInMonth = _jlcal.jalaaliMonthLength(year, month);
+
+        if ((dayOfWeek == 5 && daysInMonth > 30) || (dayOfWeek == 6 && daysInMonth >= 30)) {
+            $(tb).find("tr:last").removeClass("hidden");
+        }
+        else {
+            $(tb).find("tr:last").addClass("hidden");
+        }
+
+        $(tb).find("td span").popover("destroy");
+        $(tb).find("td").text("")
+            .removeAttr("data-jl")
+            .removeAttr("data-gr")
+            .removeAttr("data-hj")
+            .removeClass("dayoff");
+        td = $(tb).find("td");
+
+        for (var index = dayOfWeek; index < daysInMonth + dayOfWeek; index++) {
+            var element = td[index];
+            j2g = _jlcal.toGregorian(year, month + 1, count);
+            g2h = _hjcal.toHijri(j2g.gy, j2g.gm - 1, j2g.gd);
+            today = new Date(j2g.gy, j2g.gm - 1, j2g.gd);
+
+            if (gd2Txt(today.getDay()) == "Fir" || isoff("jl", month, count) || isoff("hj", g2h.hm, g2h.hd)) {
+                $(element).addClass("dayoff");
+            }
+            $(element).attr("data-jl", (year + "-" + (month + 1) + "-" + count));
+            $(element).attr("data-gr", (today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()));
+            $(element).attr("data-hj", (g2h.hy + "-" + (g2h.hm + 1) + "-" + g2h.hd));
+            $(element).html(
+                "<b>" + count + "</b>" + "\n" +
+                "<span>" +
+                "<div class='font-fa tdinfo'>" +
+                g2h.hy + " " + hm2Txt(g2h.hm) + " " + g2h.hd +
+                "</div>" +
+                "<div class='font-eng tdinfo'>" +
+                gd2Txt(today.getDay()) + " " +
+                gm2Txt(today.getMonth()) + " " +
+                today.getDate() + " " +
+                today.getFullYear() +
+                "</div></span>"
+            );
+            count++;
+        }
+    }
+
+    /* handle events */
+    $(".fc-year").change(function () {
+        _year = parseInt($(this).find(":selected").val());
+        UpdateCal($(this).closest("table"), _year, _month, _day);
     });
+    $(".fc-month").change(function () {
+        _month = parseInt($(this).find(":selected").val());
+        UpdateCal($(this).closest("table"), _year, _month, _day);
+    });
+    $(".fc-table td").on("click", function (e) {
+        $tb = $(this).closest("table");
+        $(".fc-table td span").popover("destroy");
+        if ($(this).attr("data-jl") && $(this).attr("data-gr")) {
+            var title = "", content = "";
+            _currDay = $(this);
+            var jl = $(this).attr("data-jl").split("-");
+            var wc = $(this).attr("data-gr").split("-");
+            var hj = $(this).attr("data-hj").split("-");
+            $.ajax({
+                url: "https://farsicalendar.com/api/sh,wc,ic/" +
+                jl[2] + "," + wc[2] + "," + hj[2] + "/" + jl[1] + "," + wc[1] + "," + hj[1],
+                type: "GET",
+                dataType: 'json',
+                date: { limit: 3 },
+                success: function (data) {
+                    console.log(data);
+                    title = "رویدادهای امروز:";
+                    content += "<ul>";
+                    if (data.values.length == 0) {
+                        content += "<li>" + "موردی یافت نشد" + "</li>";
+                    } else {
+                        $.each(data.values, function (index, item) {
+                            if (item.dayoff == true) {
+                                content += "<li class='dayoff'>" + item.occasion + "</li>";
+                            }
+                            else {
+                                content += "<li>" + item.occasion + "</li>";
+                            }
+                        });
+                    }
+                    content += "</ul>";
+                    $(_currDay).children("span").popover({
+                        title: title,
+                        content: content,
+                        container: 'body',
+                        placement: "bottom auto",
+                        html: true
+                    });
+                    $(_currDay).children("span").popover("show");
+                },
+                error: function () {
+                    console.log("error!!!");
+                }
+            });
+            e.preventDefault();
+        }
+    });
+
+    /* helpers */
+    function gd2Txt(day) {
+        switch (day) {
+            case 0:
+                return "Sun";
+                break;
+            case 1:
+                return "Mon";
+                break;
+            case 2:
+                return "Tue";
+                break;
+            case 3:
+                return "Wed";
+                break;
+            case 4:
+                return "Thu";
+                break;
+            case 5:
+                return "Fir";
+                break;
+            case 6:
+                return "Sat";
+                break;
+            default:
+                return "خطا";
+                break;
+        }
+    }
+    function gm2Txt(mon) {
+        switch (mon) {
+            case 0:
+                return "Jan";
+                break;
+            case 1:
+                return "Feb";
+                break;
+            case 2:
+                return "Mar";
+                break;
+            case 3:
+                return "Apr";
+                break;
+            case 4:
+                return "May";
+                break;
+            case 5:
+                return "Jun";
+                break;
+            case 6:
+                return "Jul";
+                break;
+            case 7:
+                return "Aug";
+                break;
+            case 8:
+                return "Sep";
+                break;
+            case 9:
+                return "Oct";
+                break;
+            case 10:
+                return "Nov";
+                break;
+            case 11:
+                return "Dec";
+                break;
+            default:
+                return "خطا";
+                break;
+        }
+    }
+    function hm2Txt(mon) {
+        switch (mon) {
+            case 0:
+                return "محرم";
+                break;
+            case 1:
+                return "صفر";
+                break;
+            case 2:
+                return "ربیع الاول";
+                break;
+            case 3:
+                return "ربیع الثانی";
+                break;
+            case 4:
+                return "جمادی الاول";
+                break;
+            case 5:
+                return "جمادی الثانی";
+                break;
+            case 6:
+                return "رجب";
+                break;
+            case 7:
+                return "شعبان";
+                break;
+            case 8:
+                return "رمضان";
+                break;
+            case 9:
+                return "شوال";
+                break;
+            case 10:
+                return "ذی القعده";
+                break;
+            case 11:
+                return "ذی الحجه";
+                break;
+            default:
+                return "خطا";
+                break;
+        }
+    }
+    function isoff(calType, mon, day) {
+        var jlDayoff = [
+            "1/1", "1/2", "1/3", "1/4", "1/12", "1/13",
+            "3/14", "3/15", "11/22", "12/29"];
+        var hjDayoff = [
+            "1/9", "1/10", "2/20", "2/28", "2/30", "3/17", "6/3", "7/13",
+            "7/27", "8/15", "9/21", "10/1", "10/2", "10/25", "12/10", "12/18"];
+
+        mon += 1;
+        if (calType == "jl") {
+            if (jlDayoff.indexOf(mon + "/" + day) != -1)
+                return true;
+            else
+                return false;
+        }
+        if (calType == "hj") {
+            if (hjDayoff.indexOf(mon + "/" + day) != -1)
+                return true
+            else
+                return false;
+        }
+    }
+
 </script>
-{% endblock %}
+
+{% endblock %}"

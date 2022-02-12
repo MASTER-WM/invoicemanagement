@@ -55,29 +55,32 @@
         var t = new Date,
             n = (t.getDate(), t.getMonth(), t.getFullYear(), new Date(e.now())),
             a = [{
-                title: "Chicken Burger",
+                title: "برنامه نویسی",
                 start: new Date(e.now() + 158e6),
                 className: "bg-dark"
             }, {
-                title: "Soft drinks",
+                title: "پیاده روی",
                 start: n,
                 end: n,
                 className: "bg-danger"
             }, {
-                title: "Hot dog",
+                title: "استراحت کردن",
                 start: new Date(e.now() + 338e6),
                 className: "bg-primary"
             }],
             o = this;
         o.$calendarObj = o.$calendar.fullCalendar({
+            locale: 'fa',
+            timeFormat: 'hh:mm a',
             slotDuration: "00:15:00",
             minTime: "08:00:00",
             maxTime: "19:00:00",
             defaultView: "month",
+            isJalaali : true,
             handleWindowResize: !0,
             height: e(window).height() - 100,
             header: {
-                left: "prev,next today",
+                left: "next,prev today",
                 center: "title",
                 right: "month,agendaWeek,agendaDay"
             },

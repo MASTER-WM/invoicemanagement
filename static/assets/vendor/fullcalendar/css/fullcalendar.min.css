@@ -15,7 +15,7 @@ body .fc {
 .fc-list-item-time,
 .fc-time-grid-event .fc-time,
 .fc-time-grid-event.fc-short .fc-content {
-    white-space: nowrap;
+   /* white-space: nowrap;*/
 }
 .fc-event,
 .fc-event:hover,
@@ -412,7 +412,7 @@ tr:first-child > td > .fc-day-grid-event {
     opacity: 0.25;
 }
 .fc-day-grid-event .fc-time {
-    font-weight: 700;
+    font-weight: 500;
 }
 .fc-ltr .fc-day-grid-event.fc-allow-mouse-resize .fc-start-resizer,
 .fc-rtl .fc-day-grid-event.fc-allow-mouse-resize .fc-end-resizer {

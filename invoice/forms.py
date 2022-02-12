@@ -31,6 +31,7 @@ class UserLoginForm(forms.ModelForm):
 
 
 
+
 class ClientForm(forms.ModelForm):
 
     clientCode = forms.CharField(
@@ -41,35 +42,20 @@ class ClientForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
         required=True, label='نام مشتری')
 
-    addressLine1 = forms.CharField(
-    widget = forms.Textarea(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
-             required = False, label = 'آدرس')
+    clientWork = forms.CharField(
+        widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mg-3'}),
+        required=False, label='زمینه فعالیت' )
 
-    province = forms.CharField(
-    widget = forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
-             required = False, label = 'استان')
-
-    postalCode = forms.CharField(
-    widget = forms.NumberInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
-             required = False, label = 'کد پستی')
-
-    phoneNumber = forms.CharField(
-        widget=forms.NumberInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
-        required=True, label='شماره تماس')
 
     emailAddress = forms.CharField(
         widget=forms.EmailInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
         required=False, label='ایمیل')
 
-    taxNumber = forms.CharField(
-        widget=forms.NumberInput(attrs={'id': 'floatingInput', 'class': 'form-control mb-3'}),
-        required=False, label='شماره مالیاتی')
-
 
 
     class Meta:
         model = Client
-        fields = ['clientCode','clientName',  'addressLine1',  'phoneNumber', 'emailAddress', 'taxNumber','province', 'postalCode','clientLogo' ]
+        fields = ['clientCode','clientName',  'clientWork', 'emailAddress' ]
 
 
 
@@ -81,7 +67,7 @@ class ProductForm(forms.ModelForm):
         required=True, label='نام محصول')
 
     quantity = forms.CharField(
-        widget=forms.NumberInput(attrs={'id': 'floatingInput', 'class': 'form-control col-md-6'}),
+        widget=forms.TextInput(attrs={'id': 'floatingInput', 'class': 'form-control col-md-6'}),
         required=True, label='تعداد')
 
     description = forms.CharField(
@@ -101,7 +87,8 @@ class InvoiceForm(forms.ModelForm):
 
     title = forms.CharField(
                     label='شماره سفارش',
-                    widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'شماره سفارش'}),required=True)
+                    required=True,
+                    widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'شماره سفارش'}))
 
     # create_Date = forms.CharField(
     #     required=True,

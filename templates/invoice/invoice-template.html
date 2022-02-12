@@ -7,7 +7,8 @@
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
 		<style>
-			.invoice-box {
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Jomhuria&family=Lalezar&family=Noto+Nastaliq+Urdu:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap');
+				.invoice-box {
 				direction: rtl;
 				max-width: 800px;
 				margin: auto;
@@ -40,7 +41,8 @@
 			}
 
 			.invoice-box table tr.top table td.title {
-				font-size: 45px;
+				text-align: center;
+				font-size: 40px;
 				line-height: 45px;
 				color: #333;
 			}
@@ -86,6 +88,14 @@
 				}
 			}
 
+			.changefont {
+				font-family: 'Amiri', serif;
+				font-family: 'Jomhuria', cursive;
+				font-family: 'Lalezar', cursive;
+				font-family: 'Noto Nastaliq Urdu', serif;
+				font-family: 'Scheherazade New', serif;
+
+
 			/** RTL **/
 			.invoice-box.rtl {
 				direction: rtl;
@@ -110,15 +120,18 @@
 						<table>
 							<tr>
 								<td >
-									<img src="{% static 'assets/images/logo.png' %}" style=" max-width: 200px" />
+									<img src="{% static 'assets/images/logo.png' %}" style=" max-width: 150px" />
 								</td>
 								<td class="title"
-      							<center >اعلام سفارش </center>
+      							<p class="text-center"> <strong style="font-family: 'Noto Nastaliq Urdu'" >  اعلام سفارش </strong> </p>
 								</td>
 
 
 								<td>
-									شماره فرم: AF-07-03<br />
+									<p class="text-left">  شماره فرم: AF-07-03 </p> <br />
+									<p class="text-left"> تاریخ ابلاغ:
+										<br>
+										<strong>{{invoice.get_jalali_createdate}}</strong>  </p>
 
 								</td>
 							</tr>
@@ -131,16 +144,21 @@
 							<hr>
 							<tr>
 								<td>
-									<strong>نام مشتری:
-										{{invoice.client.clientName}}</strong><br />
+									نام مشتری:
+										<strong class="changefont"
+										style="color: darkblue;"
+										>{{invoice.client.clientName}}</strong><br />
 									<hr>
-									<strong>شرح سفارش: </strong><br />
+									شرح سفارش
+									<strong class="changefont"></strong style="color: darkblue;"><br />
+
 								</td>
 
-								<td>
-									<strong>شماره سفارش:  {{invoice.title}}  </strong><br />
+								<td>شماره سفارش:
+									<strong class="changefont" style="color: darkblue;"> {{invoice.title}}   </strong>  <br />
 									<hr>
-									<strong> شماره / کد درخواست:  {{invoice.request_code}}</strong><br />
+									شماره / کد درخواست:
+									<strong class="changefont" style="color: darkblue;"> {{invoice.request_code}}  </strong>  <br />
 								</td>
 							</tr>
 						</table>
@@ -167,7 +185,7 @@
 			</table>
 			<br>
 			<hr>
-
+			<br>
 			<table>
 				<tr>
 					<td>تهیه کننده: بازرگانی و فروش</td>
@@ -180,6 +198,8 @@
 					<td>نام / امضا</td>
 				</tr>
 			</table>
+			<br>
+			<br>
 			<br>
 			<br>
 			<br>

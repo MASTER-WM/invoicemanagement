@@ -31,6 +31,9 @@
                                         <div class="form-group col-md-6">
                                             <input type="search" class="form-control input-rounded" name="invoiceRelated__title" placeholder="نام محصول">
                                         </div>
+                                        <div class="form-group col-md-6">
+                                            <input type="search" class="form-control input-rounded" name="invoiceRelated__description" placeholder="توضیحات محصول">
+                                        </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">جست و جو</button>
                                 </form>
@@ -56,12 +59,12 @@
 
                                         <td><strong>{{invoice.title}}</strong></td>
                                         <td>{{invoice.client.clientName}}</td>
-                                        <td>{{invoice.create_Date}}</td>
+                                        <td>{{invoice.get_jalali_createdate}}</td>
                                         <td>{{invoice.request_code}}</td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href= "#" class="btn btn-primary shadow btn-xs sharp mr-1"><i
-                                                        class="fa fa-pencil"></i></a>
+                                                <a href= "{% url 'view-pdf-invoice' invoice.slug %}" class="btn btn-primary shadow btn-xs sharp mr-1"><i
+                                                        class="fa fa-file-text-o" aria-hidden="true"></i></a>
                                             </div>
                                         </td>
                                     </tr>
